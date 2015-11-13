@@ -7,10 +7,10 @@ layout: post
 
 <!--more-->
 
-~~~python
+```python
 def miao():
     wu = 555
     return wu
-~~~
+```
 
 end
