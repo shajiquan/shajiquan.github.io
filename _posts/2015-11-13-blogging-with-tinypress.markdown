@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Blogging with TinyPress
 layout: post
 ---
