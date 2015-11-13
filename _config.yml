@@ -6,3 +6,6 @@ title: Shajiquan's Island
 tagline: 面朝大海，海风很冷。
 description: ～～
 paginate: 5
+kramdown:
+  input: GFM
+  toc_levels:     1..6
