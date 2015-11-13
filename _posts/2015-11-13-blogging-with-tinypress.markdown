@@ -6,10 +6,10 @@ layout: post
 感觉还不错，省事许多。
 
 
-```python
+~~~python
 def miao():
     wu = 555
     return wu
-```
+~~~
 
 end
