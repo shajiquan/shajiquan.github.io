@@ -13,4 +13,12 @@ kramdown:
   auto_ids: true
   footnote_nr: 1
 gems:  [jekyll-paginate]
-exclude: ["update.sh"]
+exclude: ["update.sh","Gemfile","Rakefile","start.py"]
+
+author:
+    name: shajiquan
+    email: shajiquan@gmail.com
+
+github_pages:
+    url: shajiquan.github.io
+    ssl: true
