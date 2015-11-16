@@ -1,6 +1,6 @@
 excerpt_separator: "<!--more-->"
 # pygments: true
-highlighter: true
+highlighter: pygments
 markdown: kramdown
 url: https://shajiquan.github.io
 title: Shajiquan's Island
@@ -10,4 +10,7 @@ paginate: 5
 kramdown:
   input: GFM
   toc_levels:     1..6
-gems: [jekyll-paginate]
+  auto_ids: true
+  footnote_nr: 1
+gems:  [jekyll-paginate]
+exclude: ["update.sh"]

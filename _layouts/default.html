@@ -3,13 +3,27 @@
 
   {% include head.html %}
 
-  <body>
+  <body class="layout-reverse">
 
     {% include sidebar.html %}
 
     <div class="content container">
       {{ content }}
     </div>
+
+
+    <script type="text/javascript">
+            (function function_name (argument) {
+                var host = location.host;
+                var protocol = location.protocol;
+                if (host == "shajiquan.github.io" && protocol!="http"){
+                        var loc_new = location.toLocaleString().replace('http://','https://');
+                        location = loc_new;
+                }
+            })()
+
+
+    </script>
 
   </body>
 </html>
