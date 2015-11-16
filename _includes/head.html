@@ -26,4 +26,14 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+    <script type="text/javascript">
+            (function(){
+                var host = location.host;
+                var protocol = location.protocol;
+                if (host == "shajiquan.github.io" && protocol!="https"){
+                        var loc_new = location.toLocaleString().replace('http://','https://');
+                        location = loc_new;
+                }
+            })();
+    </script>
 </head>
