@@ -1,24 +1,38 @@
 excerpt_separator: "<!--more-->"
-# pygments: true
 highlighter: pygments
 markdown: kramdown
 url: https://shajiquan.github.io
 title: Shajiquan's Island
 tagline: 面朝大海，海风很冷。
-description: ～～
+description: ～～～
 paginate: 5
 kramdown:
   input: GFM
   toc_levels:     1..6
   auto_ids: true
   footnote_nr: 1
-gems:  [jekyll-paginate]
-exclude: ["update.sh","Gemfile","Rakefile","start.py"]
+gems:
+    - jekyll-paginate
+    - jekyll-archives
+    - jekyll-redirect-from
+    - jekyll-gist
+    - jekyll-sitemap
+    - jekyll-tagging
+exclude: ["update.sh","Gemfile","Rakefile","start.py",'run.sh']
 
 author:
     name: shajiquan
     email: shajiquan@gmail.com
 
+sitemap: true
+
 github_pages:
     url: shajiquan.github.io
     ssl: true
+
+# tags
+tag_permalink_style: pretty
+tag_page_layout: tag_page
+tag_page_dir: tag
+tag_feed_layout: tag_feed
+tag_feed_dir: tag

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-message='auto update from local device'
+message='auto update from local side'
 
 if [[ $1 != "" ]]; then
     message=$*

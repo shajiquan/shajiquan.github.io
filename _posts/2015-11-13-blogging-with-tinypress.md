@@ -2,6 +2,8 @@
 published: true
 title: Blogging with TinyPress
 layout: post
+category: test
+tag: test
 ---
 
 感觉还不错，省事许多。
