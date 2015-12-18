@@ -3,12 +3,13 @@ published: true
 layout: post
 title: Golang 的时间格式问题
 date: 2015-12-18 18:19
+category: golang
 ---
 
 今天有人在群里问：
 
-``` 
-问一个时间格式化问题：	
+```
+问一个时间格式化问题：
 fmt.Println(time.Now().Format("2006year 01month 02day"))
 2015year 12month 18day
 
@@ -17,6 +18,8 @@ fmt.Println(time.Now().Format("2015year 01month 01day"))
 为什么？
 困扰好久
 ```
+
+<!--more-->
 
 首先，这是一个很奇葩的问题。
 
@@ -73,5 +76,3 @@ const (
 	StampNano  = "Jan _2 15:04:05.000000000"
 )
 ```
-
-
