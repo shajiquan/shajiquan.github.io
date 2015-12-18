@@ -10,6 +10,14 @@
     font-weight: 300;
 }
 
+.content {
+    max-width: 48rem;
+}
+
+.sidebar{
+    width: 16rem!important;
+}
+
 @media (min-width: 48rem)
 .sidebar {
     position: fixed;
