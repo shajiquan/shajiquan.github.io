@@ -9,19 +9,11 @@ span.post-date{
     padding-right: 1rem;
 }
 
-
 .mg-btm-10{
     margin-bottom: 3rem;
 }
 .mg-top-10{
     margin-top: 3rem;
-}
-
-
-
-.sidebar .sidebar-menus a.sidebar-nav-item{
-    display:inline;
-    float: none;
 }
 
 @media (min-width: 48rem) .sidebar {
@@ -46,6 +38,23 @@ div.sidebar-box{
     color: #fff;
     margin-top: 0;
     font-family: "Abril Fatface", serif;
+    font-size: 2.23rem;
+}
+
+.sidebar h2, .sidebar h3{
+    color:rgba(255,255,255,.5);
+}
+
+
+.sidebar-about .lead {
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+.sidebar-about h1 {
+    color: #fff;
+    margin-top: 0;
+    font-family: "Abril Fatface", serif;
     font-size: 2.5rem;
 }
 .sidebar-about .lead {
@@ -60,31 +69,6 @@ div.sidebar-box{
     max-width: 100px!important;
 }
 
-/* iphone */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-	img { max-width: 100%; }
-    .sidebar-about .profile-picture {
-        margin: 0 auto;
-        border-radius: 50%;
-        border: 2px solid #5b8da2;
-        width: 100%;
-        max-width: 5rem!important;
-        max-width: 100px!important;
-    }
-}
-
-/* ipad */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-	img { max-width: 100%; }
-    .sidebar-about .profile-picture {
-        margin: 0 auto;
-        border-radius: 50%;
-        border: 2px solid #5b8da2;
-        width: 100%;
-        max-width: 5rem!important;
-        max-width: 100px!important;
-    }
-}
 
 /* Sidebar nav */
 
@@ -118,30 +102,15 @@ a.sidebar-nav-item:hover, a.sidebar-nav-item:focus {
     color: #6096ac;
     background: #fff;
 }
+
 a.sidebar-nav-item.active:hover, a.sidebar-nav-item.active:focus {
     color: #fff;
 }
 
-
-
-
-.sidebar-about h1 {
-    color: #fff;
-    margin-top: 0;
-    font-family: "Abril Fatface", serif;
-    font-size: 2.23rem;
+.sidebar-menus .sidebar-nav-item{
+    display: inline-block;
+    float: none;
 }
-
-.sidebar h2, .sidebar h3{
-    color:rgba(255,255,255,.5);
-}
-
-
-.sidebar-about .lead {
-    font-size: 0.8rem;
-    font-weight: 300;
-}
-
 
 .sidebar-menus{
     margin-bottom: 0;
@@ -173,6 +142,10 @@ a.read-more:hover,.post-title a:hover {
 
 .page, .post {
     margin-bottom: 2em;
+}
+
+img{
+    max-width: 100%!important;
 }
 
 /* utils from Bootstrap*/
@@ -347,9 +320,7 @@ a.bg-danger:focus {
   display: none !important;
 }
 @media (max-width: 767px) {
-    img{
-        max-width: 100%!important;
-    }
+
   .visible-xs {
     display: block !important;
   }
