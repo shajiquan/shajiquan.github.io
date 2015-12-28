@@ -16,6 +16,10 @@ span.post-date{
     font-size: 2.23rem;
 }
 
+.sidebar-about h1 img {
+    width:100%;
+}
+
 .sidebar h2, .sidebar h3{
     color:rgba(255,255,255,.5);
 }
