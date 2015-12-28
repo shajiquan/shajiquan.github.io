@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Shajiquan's Island</title><link href="http://blog.shajiquan.com/" rel="alternate"></link><link href="http://blog.shajiquan.com/feeds/golang.atom.xml" rel="self"></link><id>http://blog.shajiquan.com/</id><updated>2015-12-18T18:19:00+08:00</updated><entry><title>Golang 的时间格式化问题</title><link href="http://blog.shajiquan.com/2015/12/golang-time-format/" rel="alternate"></link><updated>2015-12-18T18:19:00+08:00</updated><author><name>shajiquan</name></author><id>tag:blog.shajiquan.com,2015-12-18:2015/12/golang-time-format/</id><summary type="html">&lt;p&gt;今天有人在群里问：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;问一个时间格式化问题：
+fmt.Println(time.Now().Format(&amp;quot;2006year 01month 02day&amp;quot;))
+2015year 12month 18day
+
+fmt.Println(time.Now().Format(&amp;quot;2015year 01month 01day&amp;quot;))
+181253year 12month 12day
+为什么？
+困扰好久
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;首先，这是一个很奇葩的问题。&lt;/p&gt;
+&lt;p&gt;其次，我，以及比我对 Golang 更了解的朋友，都掉过这个坑。我们曾在这个问题上，花了很多时间，最后发现是 Golang 自己的奇怪设定导致。尤其是，一段时间不用 time 包后，过段时间居然又忘了。&lt;/p&gt;
+&lt;p&gt;然后，怪我们没看文档，可是...&lt;/p&gt;
+&lt;p&gt;结论：年、月、日、时、分、秒，英文、数字，必须精确地限定到 golang 指定的时间原点：&lt;code&gt;2006-01-02 15:04:05&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;package&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;fmt&amp;quot;&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;time&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hello &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nx"&gt;nowRight&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;time&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Now&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;Format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2006-01-02 15:04&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;nowRight&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nx"&gt;nowWrong&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;time&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Now&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;Format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2006-01-03日错了 15:05 分错了&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;nowWrong&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;time&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Now&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;Format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Mon Jan _2 15:04:05 2006 年&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;变态吧！&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;附，格式化字符串模板：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="nx"&gt;ANSIC&lt;/span&gt;       &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Mon Jan _2 15:04:05 2006&amp;quot;&lt;/span&gt;
+    &lt;span class="nx"&gt;UnixDate&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Mon Jan _2 15:04:05 MST 2006&amp;quot;&lt;/span&gt;
+    &lt;span class="nx"&gt;RubyDate&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Mon Jan 02 15:04:05 -0700 2006&amp;quot;&lt;/span&gt;
+    &lt;span class="nx"&gt;RFC822&lt;/span&gt;      &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;02 Jan 06 15:04 MST&amp;quot;&lt;/span&gt;
+    &lt;span class="nx"&gt;RFC822Z&lt;/span&gt;     &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;02 Jan 06 15:04 -0700&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;// RFC822 with numeric zone&lt;/span&gt;
+    &lt;span class="nx"&gt;RFC850&lt;/span&gt;      &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Monday, 02-Jan-06 15:04:05 MST&amp;quot;&lt;/span&gt;
+    &lt;span class="nx"&gt;RFC1123&lt;/span&gt;     &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Mon, 02 Jan 2006 15:04:05 MST&amp;quot;&lt;/span&gt;
+    &lt;span class="nx"&gt;RFC1123Z&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Mon, 02 Jan 2006 15:04:05 -0700&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;// RFC1123 with numeric zone&lt;/span&gt;
+    &lt;span class="nx"&gt;RFC3339&lt;/span&gt;     &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;2006-01-02T15:04:05Z07:00&amp;quot;&lt;/span&gt;
+    &lt;span class="nx"&gt;RFC3339Nano&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;2006-01-02T15:04:05.999999999Z07:00&amp;quot;&lt;/span&gt;
+    &lt;span class="nx"&gt;Kitchen&lt;/span&gt;     &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;3:04PM&amp;quot;&lt;/span&gt;
+    &lt;span class="c1"&gt;// Handy time stamps.&lt;/span&gt;
+    &lt;span class="nx"&gt;Stamp&lt;/span&gt;      &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Jan _2 15:04:05&amp;quot;&lt;/span&gt;
+    &lt;span class="nx"&gt;StampMilli&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Jan _2 15:04:05.000&amp;quot;&lt;/span&gt;
+    &lt;span class="nx"&gt;StampMicro&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Jan _2 15:04:05.000000&amp;quot;&lt;/span&gt;
+    &lt;span class="nx"&gt;StampNano&lt;/span&gt;  &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Jan _2 15:04:05.000000000&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="golang"></category></entry></feed>
