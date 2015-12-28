@@ -9,20 +9,6 @@ span.post-date{
     padding-right: 1rem;
 }
 
-.sidebar-about h1 {
-    color: #fff;
-    margin-top: 0;
-    font-family: "Abril Fatface", serif;
-    font-size: 2.23rem;
-}
-
-.sidebar-about h1 img {
-    width:100%;
-}
-
-.sidebar h2, .sidebar h3{
-    color:rgba(255,255,255,.5);
-}
 
 .mg-btm-10{
     margin-bottom: 3rem;
@@ -32,13 +18,10 @@ span.post-date{
 }
 
 
-.sidebar-about .lead {
-    font-size: 0.8rem;
-    font-weight: 300;
-}
 
-div.sidebar-box{
-    margin-bottom: 3rem;
+.sidebar .sidebar-menus a.sidebar-nav-item{
+    display:inline;
+    float: none;
 }
 
 @media (min-width: 48rem) .sidebar {
@@ -52,8 +35,13 @@ div.sidebar-box{
     max-width: 48rem;
 }
 
-/* About section */
+/* Sidebar section */
 
+div.sidebar-box{
+    margin-bottom: 3rem;
+}
+
+/* Sidebar - About section */
 .sidebar-about h1 {
     color: #fff;
     margin-top: 0;
@@ -67,7 +55,8 @@ div.sidebar-box{
     margin: 0 auto;
     border-radius: 50%;
     border: 2px solid #5b8da2;
-    max-width: 5rem;
+    max-width: 5rem!important;
+    max-width: 120px!important;
 }
 
 /* Sidebar nav */
@@ -107,11 +96,37 @@ a.sidebar-nav-item.active:hover, a.sidebar-nav-item.active:focus {
 }
 
 
+
+
+.sidebar-about h1 {
+    color: #fff;
+    margin-top: 0;
+    font-family: "Abril Fatface", serif;
+    font-size: 2.23rem;
+}
+
+.sidebar h2, .sidebar h3{
+    color:rgba(255,255,255,.5);
+}
+
+
+.sidebar-about .lead {
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+
+.sidebar-menus{
+    margin-bottom: 0;
+}
+
+
 .page-heading{
     margin-bottom: 2em;
     text-align:center;
 }
 
+/* Content */
 .content {
     padding-top: 3rem;
     padding-bottom: 4rem;
@@ -132,6 +147,8 @@ a.read-more:hover,.post-title a:hover {
 .page, .post {
     margin-bottom: 2em;
 }
+
+/* utils from Bootstrap*/
 
 .center-block {
   display: block;
