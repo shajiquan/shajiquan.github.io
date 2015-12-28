@@ -108,12 +108,12 @@ a.sidebar-nav-item.active:hover, a.sidebar-nav-item.active:focus {
 }
 
 .sidebar-menus .sidebar-nav-item{
-    display: inline-block;
-    float: none;
+    display: inline!important;
+    float: none!important;
 }
 
 .sidebar-menus{
-    margin-bottom: 0;
+    margin-bottom: 0!important;
 }
 
 
