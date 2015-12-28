@@ -60,6 +60,32 @@ div.sidebar-box{
     max-width: 100px!important;
 }
 
+/* iphone */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	img { max-width: 100%; }
+    .sidebar-about .profile-picture {
+        margin: 0 auto;
+        border-radius: 50%;
+        border: 2px solid #5b8da2;
+        width: 100%;
+        max-width: 5rem!important;
+        max-width: 100px!important;
+    }
+}
+
+/* ipad */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+	img { max-width: 100%; }
+    .sidebar-about .profile-picture {
+        margin: 0 auto;
+        border-radius: 50%;
+        border: 2px solid #5b8da2;
+        width: 100%;
+        max-width: 5rem!important;
+        max-width: 100px!important;
+    }
+}
+
 /* Sidebar nav */
 
 a.sidebar-nav-item {
