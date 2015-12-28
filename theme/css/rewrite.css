@@ -57,7 +57,7 @@ div.sidebar-box{
     border: 2px solid #5b8da2;
     width: 100%;
     max-width: 5rem!important;
-    max-width: 120px!important;
+    max-width: 100px!important;
 }
 
 /* Sidebar nav */
@@ -321,6 +321,9 @@ a.bg-danger:focus {
   display: none !important;
 }
 @media (max-width: 767px) {
+    img{
+        max-width: 100%!important;
+    }
   .visible-xs {
     display: block !important;
   }
