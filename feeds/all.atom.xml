@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Shajiquan's Island</title><link href="https://shajiquan.github.io/" rel="alternate"></link><link href="https://shajiquan.github.io/feeds/all.atom.xml" rel="self"></link><id>https://shajiquan.github.io/</id><updated>2015-12-18T18:19:00+08:00</updated><entry><title>Golang 的时间格式化问题</title><link href="https://shajiquan.github.io/2015/12/golang-time-format/" rel="alternate"></link><updated>2015-12-18T18:19:00+08:00</updated><author><name>shajiquan</name></author><id>tag:shajiquan.github.io,2015-12-18:2015/12/golang-time-format/</id><summary type="html">&lt;p&gt;今天有人在群里问：&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Shajiquan's Island</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2015-12-18T18:19:00+08:00</updated><entry><title>Golang 的时间格式化问题</title><link href="/2015/12/golang-time-format/" rel="alternate"></link><updated>2015-12-18T18:19:00+08:00</updated><author><name>shajiquan</name></author><id>tag:,2015-12-18:2015/12/golang-time-format/</id><summary type="html">&lt;p&gt;今天有人在群里问：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;问一个时间格式化问题：
 fmt.Println(time.Now().Format(&amp;quot;2006year 01month 02day&amp;quot;))
 2015year 12month 18day
@@ -56,4 +56,4 @@ fmt.Println(time.Now().Format(&amp;quot;2015year 01month 01day&amp;quot;))
     &lt;span class="nx"&gt;StampMicro&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Jan _2 15:04:05.000000&amp;quot;&lt;/span&gt;
     &lt;span class="nx"&gt;StampNano&lt;/span&gt;  &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Jan _2 15:04:05.000000000&amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="golang"></category></entry><entry><title>First post</title><link href="https://shajiquan.github.io/2015/12/first-post/" rel="alternate"></link><updated>2015-12-14T12:33:00+08:00</updated><author><name>shajiquan</name></author><id>tag:shajiquan.github.io,2015-12-14:2015/12/first-post/</id><summary type="html">&lt;p&gt;此乃正文是也。&lt;/p&gt;</summary></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="golang"></category></entry><entry><title>First post</title><link href="/2015/12/first-post/" rel="alternate"></link><updated>2015-12-14T12:33:00+08:00</updated><author><name>shajiquan</name></author><id>tag:,2015-12-14:2015/12/first-post/</id><summary type="html">&lt;p&gt;此乃正文是也。&lt;/p&gt;</summary></entry></feed>
