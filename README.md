@@ -1,4 +1,4 @@
-A pelican powered blog.
+A [pelican](https://github.com/getpelican/pelican) powered blog.
 
 [http://blog.shajiquan.com](http://blog.shajiquan.com/)
 
