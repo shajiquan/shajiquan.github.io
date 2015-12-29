@@ -110,7 +110,7 @@ a.sidebar-nav-item.active:hover, a.sidebar-nav-item.active:focus {
     display: inline!important;
     float: none!important;
     background-color: #333;
-    color: #eee;
+    color: #ccc;
 }
 
 .page-heading{
