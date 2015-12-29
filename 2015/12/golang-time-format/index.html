@@ -32,8 +32,6 @@
 <div id="sidebar" class="sidebar">
 	<div class="container sidebar-sticky-no">
 
-
-
 		<div class="hidden-lg hidden-sm hidden-md">
 			<nav class="sidebar-nav sidebar-menus">
 				<a class="sidebar-nav-item" href="/" title="Homepage">Home</a>
@@ -41,10 +39,9 @@
 			</nav>
 		</div>
 
-
 		<div class="sidebar-about">
 
-			<a href="/" title="shajiquan: 欢迎来到沙吉泉之岛。我岛居然有蟒蛇、地鼠、大象、树叶...当然，还有<a href='/about'>我</a>。">
+			<a href="/" title="shajiquan: 欢迎来到沙吉泉之岛。我岛居然有蟒蛇、地鼠、大象、树叶...当然，还有我。">
 				<img id="profile-picture" class="profile-picture" src="/_assets/images/hugme.jpg">
 				<h1>Shajiquan's Island</h1>
 			</a>
@@ -69,7 +66,10 @@
 				<a class="sidebar-nav-item" href="https://weibo.com/shajiquan" target="_blank" title="weibo">
 					<i class="fa fa-weibo"></i>
 				</a>
- 			</nav>
+ 				<a class="sidebar-nav-item" href="http://blog.shajiquan.com/about" title="More about...">
+					<i class="fa fa-plus-circle"></i>
+				</a>
+			</nav>
 		</div>
 
 
@@ -119,13 +119,16 @@ fmt.Println(time.Now().Format(&quot;2015year 01month 01day&quot;))
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;hello &quot;</span><span class="p">)</span>
-    <span class="nx">nowRight</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02 15:04&quot;</span><span class="p">)</span>
+
+    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+
+    <span class="nx">nowRight</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02 15:04&quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">nowRight</span><span class="p">)</span>
 
-    <span class="nx">nowWrong</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-03日错了 15:05 分错了&quot;</span><span class="p">)</span>
+    <span class="nx">nowWrong</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-03日错了 15:05 分错了&quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">nowWrong</span><span class="p">)</span>
 
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;Mon Jan _2 15:04:05 2006 年&quot;</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;Mon Jan _2 15:04:05 2006 年&quot;</span><span class="p">))</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;变态吧！&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
