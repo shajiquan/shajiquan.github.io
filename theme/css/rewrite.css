@@ -109,12 +109,9 @@ a.sidebar-nav-item.active:hover, a.sidebar-nav-item.active:focus {
 .sidebar-menus .sidebar-nav-item{
     display: inline!important;
     float: none!important;
+    background-color: #333;
+    color: #eee;
 }
-
-.sidebar-menus{
-    margin-bottom: 0!important;
-}
-
 
 .page-heading{
     margin-bottom: 2em;
@@ -136,7 +133,7 @@ a.read-more:hover,.post-title a:hover {
 }
 
 .post-title a{
-    color:#268bd2;
+    /*color:#268bd2;*/
 }
 
 .page, .post {
