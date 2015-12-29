@@ -1,8 +1,9 @@
 .content p{
     font-size: 18px;
 }
+
 span.post-date{
-    font-size: 16px;
+    font-size: 0.8rem;
 }
 
 .share-buttons .share a {
@@ -16,21 +17,26 @@ span.post-date{
     margin-top: 3rem;
 }
 
-@media (min-width: 48rem) .sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 16rem!important;
-    text-align: left;
+@media (min-width: 48rem){
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        padding:1rem 1rem;
+        width: 18rem;
+        text-align: center;
+    }
 }
-@media (min-width: 48rem) .content {
-    max-width: 48rem;
+@media (min-width: 48rem) {
+    .content {
+        /*max-width: 46rem;*/
+    }
 }
 
 /* Sidebar section */
 
 div.sidebar-box{
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 /* Sidebar - About section */
@@ -72,10 +78,6 @@ div.sidebar-box{
 
 /* Sidebar nav */
 
-a.sidebar-nav-item {
-    color: black;
-}
-
 .sidebar-nav {
     margin-bottom: 1.5rem;
     clear:both;
@@ -84,7 +86,9 @@ a.sidebar-nav-item {
     text-align: center;
     display: block;
     padding: 0.25rem 0.5rem;
-    background: white;
+    background: #303030;
+    color:#fff;
+    /*background: white;*/
     /*background: #7dafc4;*/
     margin: 0 0.2rem 0.3rem;
     border-radius: 0.25rem;
@@ -93,9 +97,9 @@ a.sidebar-nav-item {
     float: left;
 }
 a.sidebar-nav-item:hover, a.sidebar-nav-item:focus {
-    background: #303030;
+    background: white;
     text-decoration: none;
-    color: white;
+    color: black;
 }
 .sidebar-nav-item.active {
     color: #6096ac;
@@ -106,11 +110,21 @@ a.sidebar-nav-item.active:hover, a.sidebar-nav-item.active:focus {
     color: #fff;
 }
 
+.sidebar-menus{
+    /*position: fixed;*/
+    top:1rem;
+}
+
 .sidebar-menus .sidebar-nav-item{
     display: inline!important;
     float: none!important;
-    background-color: #333;
-    color: #ccc;
+    font-weight: 500;
+    color: #888;
+    background-color: #242424;
+}
+
+.sidebar-menus .sidebar-nav-item:hover{
+    font-weight: bold;
 }
 
 .page-heading{
@@ -142,6 +156,10 @@ a.read-more:hover,.post-title a:hover {
 
 .content img{
     max-width: 100%!important;
+}
+
+a.text-muted {
+  color: #777;
 }
 
 /* utils from Bootstrap */
