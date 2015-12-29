@@ -2,7 +2,10 @@ A pelican powered blog.
 
 [http://blog.shajiquan.com](http://blog.shajiquan.com/)
 
-
+- Beautiful URL Mapping
 - Sitemap Support
 - CSS file minify
-- Beautiful URL Mapping
+- Google Analytics
+- Disqus Comment
+- Social share
+- Responsive, mobile friendly
