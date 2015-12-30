@@ -40,7 +40,7 @@ fmt.Println(time.Now().Format(&amp;quot;2015year 01month 01day&amp;quot;))
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;附，格式化字符串模板：&lt;/p&gt;
+&lt;p&gt;附，格式化字符串模板、实时运行示例（赞这个服务）：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="nx"&gt;ANSIC&lt;/span&gt;       &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Mon Jan _2 15:04:05 2006&amp;quot;&lt;/span&gt;
     &lt;span class="nx"&gt;UnixDate&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Mon Jan _2 15:04:05 MST 2006&amp;quot;&lt;/span&gt;
@@ -59,4 +59,7 @@ fmt.Println(time.Now().Format(&amp;quot;2015year 01month 01day&amp;quot;))
     &lt;span class="nx"&gt;StampMicro&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Jan _2 15:04:05.000000&amp;quot;&lt;/span&gt;
     &lt;span class="nx"&gt;StampNano&lt;/span&gt;  &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Jan _2 15:04:05.000000000&amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="golang"></category></entry><entry><title>First post</title><link href="http://blog.shajiquan.com/2015/12/first-post/" rel="alternate"></link><updated>2015-12-14T12:33:00+08:00</updated><author><name>shajiquan</name></author><id>tag:blog.shajiquan.com,2015-12-14:2015/12/first-post/</id><summary type="html">&lt;p&gt;此乃正文是也。&lt;/p&gt;</summary></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;iframe style="border:1px solid" src="https://wide.b3log.org/playground/0f8c6853610b15ad81512c98b6a250e7.go?embed=true" width="99%" height="600"&gt;&lt;/iframe&gt;</summary><category term="golang"></category></entry><entry><title>First post</title><link href="http://blog.shajiquan.com/2015/12/first-post/" rel="alternate"></link><updated>2015-12-14T12:33:00+08:00</updated><author><name>shajiquan</name></author><id>tag:blog.shajiquan.com,2015-12-14:2015/12/first-post/</id><summary type="html">&lt;p&gt;此乃正文是也。&lt;/p&gt;</summary></entry></feed>
