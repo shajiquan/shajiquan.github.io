@@ -4,10 +4,10 @@
 
 
 
-.post-content .iframe-wrapper{
+.iframe-wrapper{
     overflow-x: auto;
 }
-.post-content iframe{
+iframe{
     max-width: 100% !important;
     -webkit-overflow-scrolling:touch;
 }
