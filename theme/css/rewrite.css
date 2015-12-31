@@ -3,7 +3,8 @@
 }
 
 .content iframe{
-    max-width: 100%;
+    max-width: 100% !important;
+    -webkit-overflow-scrolling:touch;
 }
 
 span.post-date{
