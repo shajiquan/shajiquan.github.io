@@ -2,7 +2,12 @@
     font-size: 18px;
 }
 
-.content iframe{
+
+
+.post-content .iframe-wrapper{
+    overflow-x: auto;
+}
+.post-content iframe{
     max-width: 100% !important;
     -webkit-overflow-scrolling:touch;
 }
