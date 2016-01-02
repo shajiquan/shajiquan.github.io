@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.shajiquan.com/</loc>
-<lastmod>2016-01-03T01:44:56-00:00</lastmod>
+<lastmod>2016-01-03T01:50:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -88,27 +88,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.shajiquan.com/tag/database</loc>
-<lastmod>2015-01-11T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://blog.shajiquan.com/tag/golang</loc>
-<lastmod>2015-12-18T18:19:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://blog.shajiquan.com/tag/sqlalchemy</loc>
-<lastmod>2014-12-21T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://blog.shajiquan.com/tag/sns</loc>
 <lastmod>2015-01-11T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -123,7 +102,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.shajiquan.com/tag/sql</loc>
+<loc>http://blog.shajiquan.com/tag/database</loc>
 <lastmod>2015-01-11T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -137,8 +116,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.shajiquan.com/tag/python</loc>
+<loc>http://blog.shajiquan.com/tag/sqlalchemy</loc>
 <lastmod>2014-12-21T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.shajiquan.com/tag/golang</loc>
+<lastmod>2015-12-18T18:19:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -146,6 +132,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://blog.shajiquan.com/tag/jquery</loc>
 <lastmod>2014-03-14T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.shajiquan.com/tag/python</loc>
+<lastmod>2014-12-21T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.shajiquan.com/tag/sql</loc>
+<lastmod>2015-01-11T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
