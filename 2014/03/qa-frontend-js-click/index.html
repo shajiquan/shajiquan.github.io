@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>怎么设置一个网页中 点开一个链接后 其它链接不能再点击 - Shajiquan's Island</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+		<link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+	        <link rel="stylesheet" href="http://blog.shajiquan.com/theme/css/style.min.css?12519d77">
+
+			<link rel="icon" type="image/x-icon" href="/static/images/hugme.png">
+			<link rel="apple-touch-icon" sizes="57x57" href="/static/images/hugme.png">
+			<link rel="apple-touch-icon" sizes="114x114" href="/static/images/hugme.png">
+			<link rel="apple-touch-icon" sizes="72x72" href="/static/images/hugme.png">
+			<link rel="apple-touch-icon" sizes="144x144" href="/static/images/hugme.png">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.shajiquan.com/feed.xml">
+	<script type="text/javascript">
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ 			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ 			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-66785549-2', 'auto');
+			ga('send', 'pageview');
+	</script>
+
+        <meta name="tags" content="frontend" />
+        <meta name="tags" content="javascript" />
+        <meta name="tags" content="jquery" />
+	</head>
+
+	<body class="layout-reverse">
+<div id="sidebar" class="sidebar">
+	<div class="container sidebar-sticky-no">
+		<div class="sidebar-header-menus">
+			<nav class="sidebar-nav sidebar-menus">
+
+				<a class="sidebar-nav-item" href="/" title="Home">Home</a>
+
+				<a class="sidebar-nav-item" href="/about" title="About">About</a>
+			</nav>
+		</div>
+
+		<div class="sidebar-about">
+			<a href="/" title="shajiquan: 欢迎来到沙吉泉之岛。岛上居民有蟒蛇、地鼠、大象、...当然，还有我。">
+				<img id="profile-picture" class="profile-picture" src="/static/images/hugme.png">
+				<h1>Shajiquan's Island</h1>
+			</a>
+
+			<p class="lead"></p>
+			<p class="lead">欢迎来到沙吉泉之岛。岛上居民有蟒蛇、地鼠、大象、...当然，还有<a href='/about'>我</a>。 </p>
+		</div>
+
+		<div class="sidebar-box clearfix hidden-xs">
+			<!-- <h3 class="hidden-xs"><i class="fa fa-list-ul "></i></i></h3> -->
+			<nav class="sidebar-nav">
+				<a class="sidebar-nav-item" href="https://github.com/shajiquan" target="_blank" title="github">
+					<i class="fa fa-github"></i>
+				</a>
+				<a class="sidebar-nav-item" href="https://twitter.com/shajiquan" target="_blank" title="twitter">
+					<i class="fa fa-twitter"></i>
+				</a>
+				<a class="sidebar-nav-item" href="https://weibo.com/shajiquan" target="_blank" title="weibo">
+					<i class="fa fa-weibo"></i>
+				</a>
+ 				<a class="sidebar-nav-item" href="feed.xml">
+					<i class="fa fa-feed"></i>
+				</a>
+				<a class="sidebar-nav-item" href="http://blog.shajiquan.com/about" title="More about...">
+					<i class="fa fa-plus-circle"></i>
+				</a>
+			</nav>
+		</div>
+
+
+		<div class="clearfix sidebar-box copyright hidden-xs hidden-sm text-muted small">
+			<p class="lead"></p>
+			<p class="lead"></p>
+			<p class="text-muted small">© 2016. All rights reserved.</p>
+			<p class="small text-muted">Powered by <a class="text-muted" href="https://github.com/shajiquan/pelican-hyde-theme">Pelican with Hyde Theme</a>.</p>
+		</div>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+    <h1 class="post-title">
+        <a href="http://blog.shajiquan.com/2014/03/qa-frontend-js-click/" title="shajiquan: 怎么设置一个网页中 点开一个链接后 其它链接不能再点击">怎么设置一个网页中 点开一个链接后 其它链接不能再点击</a>
+    </h1>
+    <span class="post-date">
+        2014-03-14 in <a href="http://blog.shajiquan.com/category/qa" title="Q & A 系列文章是我在 Segmentfault 等社区的回答。发在 Blog 时可能略做调整。">问与答</a>,     with tags:
+        <a href="http://blog.shajiquan.com/tag/frontend/">frontend</a>,
+        <a href="http://blog.shajiquan.com/tag/javascript/">javascript</a>,
+        <a href="http://blog.shajiquan.com/tag/jquery/">jquery</a>,
+    </span>
+
+    <div class="post-content">
+        <h2>原题</h2>
+<ul>
+<li>标题：怎么设置一个网页中 点开一个链接后 其它链接不能再点击</li>
+<li>网址：http://segmentfault.com/q/1010000000434859/a-1020000000435212</li>
+<li>问题详情：</li>
+</ul>
+<p>怎么设置一个网页中 点开一个链接后 跳转之前 页面其它链接不能再点击</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+          <span class="kd">var</span> <span class="nx">url</span><span class="o">=</span><span class="k">this</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
+          <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">,</span><span class="s2">&quot;#&quot;</span><span class="p">);</span>
+          <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>这个咋样</p>
+<hr />
+<h2>解答</h2>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#Link&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">not</span><span class="p">(</span><span class="s2">&quot;#Link&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>update --- 贴一下完整代码：
+步骤：点击A链接，其他链接不可点击，跳转到A链接。</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">not</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">)).</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;即将不可点击&quot;</span><span class="p">);</span> <span class="c1">// 测试，改变其他 a 的 text，下面再禁用它们的点击。</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">not</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">)).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span> <span class="c1">// 禁止当前a之外的其他a的点击事件。</span>
+    <span class="p">});</span>
+
+    <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">href</span><span class="p">;</span> <span class="c1">// 跳转到目的地，当前a的href。</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>--- update again，添加一个 setTimeout 测试其他链接的点击。</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span> <span class="c1">// 取消本次事件的默认行为</span>
+
+    <span class="kd">var</span> <span class="nx">thatURL</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">);</span> <span class="c1">// 拿到目标 URL。</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">not</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">)).</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;即将不可点击&quot;</span><span class="p">);</span> <span class="c1">// 测试，改变其他 a 的 text，下面再禁用它们的点击。</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">not</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">)).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span> <span class="c1">// 取消当前 a 之外的其他 a 的默认行为（点击事件）。</span>
+    <span class="p">});</span>
+
+    <span class="c1">// 建个函数做跳转</span>
+    <span class="kd">function</span> <span class="nx">redirect</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">thatURL</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">redirect</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span> <span class="c1">// 延时跳转，期间可点击其他链接做测试。</span>
+<span class="p">});</span>
+</pre></div>
+    </div>
+
+    <div class="copyright-info mg-top-10">
+<div class="article-copyright small">
+    <h3>版权信息</h3>
+    <ul class="text-muted">
+        <li>除非特别声明，否则本站文章均为原创。</li>
+        <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
+        <li>标题：<a href="http://blog.shajiquan.com/2014/03/qa-frontend-js-click/" title="shajiquan: 怎么设置一个网页中 点开一个链接后 其它链接不能再点击">怎么设置一个网页中 点开一个链接后 其它链接不能再点击</a></li>
+        <li>作者：<a href="http://blog.shajiquan.com" title="shajiquan: 欢迎来到沙吉泉之岛。岛上居民有蟒蛇、地鼠、大象、...当然，还有我。">shajiquan</a></li>
+    </ul>
+</div>    </div>
+
+    <div class="share-buttons">
+<section class="share">
+    <h3><i class="fa fa-share-alt"></i> Share</h3>
+    <a class="fa fa-twitter" href="https://twitter.com/share?text=怎么设置一个网页中 点开一个链接后 其它链接不能再点击 via @shajiquan &amp;url=http://blog.shajiquan.com/2014/03/qa-frontend-js-click/"
+        onclick="window.open(this.href, 'twitter-share', 'width=640,height=335'); return false;"
+        title="Share on Twitter">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="fa fa-facebook" href="http://www.facebook.com/sharer/sharer.php?u=http://blog.shajiquan.com/2014/03/qa-frontend-js-click/"
+        onclick="window.open(this.href, 'facebook-share', 'width=580,height=296'); return false;"
+        title="Share on Facebook">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="fa fa-google-plus" href="https://plus.google.com/share?url=http://blog.shajiquan.com/2014/03/qa-frontend-js-click/"
+        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+        title="Share on Google Plus">
+        <span class="hidden">Google +</span>
+    </a>
+    <a class="fa fa-weibo" href="http://service.weibo.com/share/share.php?url=http://blog.shajiquan.com/2014/03/qa-frontend-js-click/&title=怎么设置一个网页中 点开一个链接后 其它链接不能再点击&content=utf-8&type=icon&ralateUid=2800468700&language=zh_cn&searchPic=true&style=simple"
+    onclick="window.open(this.href, 'weibo-share', 'width=490,height=530');return false;"
+    title="Share on Weibo">
+        <span class="hidden">Weibo</span>
+    </a>
+</section>    </div>
+    <div class="comments">
+        <h3>Comments</h3>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'shajiquan';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+
+			<div class="copyright-footer text-center">
+				<div class="clearfix sidebar-box copyright text-muted small hidden-sm hidden-lg hidden-md">
+				<p class="lead"></p>
+				<p class="text-muted small">© 2016. All rights reserved.</p>
+				<p class="small text-muted">Powered by <a class="text-muted" href="https://github.com/shajiquan/pelican-hyde-theme">Pelican with Hyde Theme</a>.</p>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
