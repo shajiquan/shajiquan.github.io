@@ -45,6 +45,22 @@ h2.post-title{
     padding-bottom: 0.2rem;
 }
 
+.post-content a,.article-copyright a {
+    color: #515151;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #999;
+}
+
+.post-content a:hover,
+.article-copyright a:hover {
+    color: #268bd2;
+    padding-bottom: 2px;
+    border-color: #268bd2;
+    text-decoration:none;
+}
+
+
+
 pre{
     font-size: .7rem;
 }
