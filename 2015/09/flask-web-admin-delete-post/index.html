@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>Flask Web 开发：管理后台删除条目的前后端示例 - Shajiquan's Island</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+		<link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+	        <link rel="stylesheet" href="/theme/css/style.min.css?3591592e">
+
+			<link rel="icon" type="image/x-icon" href="/static/images/hugme.png">
+			<link rel="apple-touch-icon" sizes="57x57" href="/static/images/hugme.png">
+			<link rel="apple-touch-icon" sizes="114x114" href="/static/images/hugme.png">
+			<link rel="apple-touch-icon" sizes="72x72" href="/static/images/hugme.png">
+			<link rel="apple-touch-icon" sizes="144x144" href="/static/images/hugme.png">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.shajiquan.com/feed.xml">
+	<script type="text/javascript">
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ 			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ 			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-66785549-2', 'auto');
+			ga('send', 'pageview');
+	</script>
+
+        <meta name="tags" content="flask" />
+        <meta name="tags" content="web-develop" />
+        <meta name="tags" content="python" />
+        <meta name="tags" content="frontend" />
+	</head>
+
+	<body class="layout-reverse">
+<div id="sidebar" class="sidebar">
+	<div class="container sidebar-sticky-no">
+		<div class="sidebar-header-menus">
+			<nav class="sidebar-nav sidebar-menus">
+
+				<a class="sidebar-nav-item" href="/" title="Home">Home</a>
+
+				<a class="sidebar-nav-item" href="/about" title="About">About</a>
+			</nav>
+		</div>
+
+		<div class="sidebar-about">
+			<a href="/" title="shajiquan: 欢迎来到沙吉泉之岛。岛上居民有蟒蛇、地鼠、大象...当然，还有我...">
+				<img id="profile-picture" class="profile-picture" src="/static/images/hugme.png">
+				<h1>Shajiquan's Island</h1>
+			</a>
+
+			<p class="lead"></p>
+			<p class="lead">欢迎来到沙吉泉之岛。岛上居民有蟒蛇、地鼠、大象...当然，还有我... </p>
+		</div>
+
+		<div class="sidebar-box clearfix hidden-xs">
+			<!-- <h3 class="hidden-xs"><i class="fa fa-list-ul "></i></i></h3> -->
+			<nav class="sidebar-nav">
+				<a class="sidebar-nav-item" href="https://github.com/shajiquan" target="_blank" title="github">
+					<i class="fa fa-github"></i>
+				</a>
+				<a class="sidebar-nav-item" href="https://twitter.com/shajiquan" target="_blank" title="twitter">
+					<i class="fa fa-twitter"></i>
+				</a>
+				<a class="sidebar-nav-item" href="https://weibo.com/shajiquan" target="_blank" title="weibo">
+					<i class="fa fa-weibo"></i>
+				</a>
+ 				<a class="sidebar-nav-item" href="feed.xml">
+					<i class="fa fa-feed"></i>
+				</a>
+				<a class="sidebar-nav-item" href="http://blog.shajiquan.com/about" title="More about...">
+					<i class="fa fa-plus-circle"></i>
+				</a>
+			</nav>
+		</div>
+
+
+		<div class="clearfix sidebar-box copyright hidden-xs hidden-sm text-muted small">
+			<p class="lead"></p>
+			<p class="lead"></p>
+			<p class="text-muted small">© 2016. All rights reserved.</p>
+			<p class="small text-muted">Powered by <a class="text-muted" href="https://github.com/shajiquan/pelican-hyde-theme">Pelican with Hyde Theme</a>.</p>
+		</div>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+    <h1 class="post-title">
+        <a href="http://blog.shajiquan.com/2015/09/flask-web-admin-delete-post/" title="shajiquan: Flask Web 开发：管理后台删除条目的前后端示例">Flask Web 开发：管理后台删除条目的前后端示例</a>
+    </h1>
+    <span class="post-date">
+        2015-09-21 in <a href="http://blog.shajiquan.com/category/qa" title="Q & A 系列文章是我在 Segmentfault 等社区的回答。发在 Blog 时可能略做调整。">问与答</a>,     with tags:
+        <a href="http://blog.shajiquan.com/tag/flask/">flask</a>,
+        <a href="http://blog.shajiquan.com/tag/web-develop/">web-develop</a>,
+        <a href="http://blog.shajiquan.com/tag/python/">python</a>,
+        <a href="http://blog.shajiquan.com/tag/frontend/">frontend</a>,
+    </span>
+
+    <div class="post-content">
+        <h2>问题</h2>
+<ul>
+<li>标题：flask写的博客页面，现在要对文章进行删除，是怎样的一个操作思路的</li>
+<li>网址：<a href="http://segmentfault.com/q/1010000003753099/a-1020000003772140">http://segmentfault.com/q/1010000003753099/a-1020000003772140</a></li>
+<li>详情：</li>
+</ul>
+<p><img alt="图片描述" src="https://sfault-image.b0.upaiyun.com/281/071/2810710213-55f8e42aa1f70_articlex" /></p>
+<p>web页面进行点击删除操作后，服务端应该怎样处理的？怎样接受这个删除指令的？</p>
+<h2>解答</h2>
+<ol>
+<li>
+<p>客户端发起一个 ajax post 请求，url 为 <code>/post/&lt;post_id&gt;/delete</code>，期待返回的数据类型为 <code>JSON</code>。  </p>
+<ul>
+<li><code>post_id</code> 为你从前端拿到的这个 post 的 id。</li>
+</ul>
+</li>
+<li>
+<p>服务端做处理，可能包括：</p>
+<ul>
+<li>验证当前用户是否有模块级别权限（假如你需要）；</li>
+<li>检查该 id 对应的 post 是否存在；<ul>
+<li>如果不存在：返回一个 JSON 数据给前端，JSON 对象类似 <code>{'status':404,'message':'Not Found'}</code>。如此，前端就知道这个条目不存在。</li>
+<li>如果存在：<ul>
+<li>检查当前用户是否具有条目删除权限；<ul>
+<li>如果没有权限：返回类似上面的 JSON 数据，但 <code>status</code> 码要重写一下，好让客户端知道这是个什么类型的错误。</li>
+<li>如果有权限：将条目标记为删除状态，或者直接从库里删除。返回类似  <code>{'status':0,'message':'success'}</code>，客户端就可以凭借 <code>status=1</code> 判断出了删除成功。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>客户端在向服务端发起请求后，收到服务端返回的 JSON 数据，根据 status 值不同，做不同的处理。比如，假如 status 等于 1，那就代表删除成功，客户端就可以重新加载当前页面，或者利用前端技术把当前行从 table 中删除或者隐藏。</p>
+</li>
+</ol>
+<p><code>status</code>、<code>message</code> 这些键名及其对应的值，客户端和服务端协商定义一个就好了。</p>
+<p>Python 代码：</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/post/&lt;int:post_id&gt;/delete&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">post_delete</span><span class="p">(</span><span class="n">post_id</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&quot;status&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;success&quot;</span>
+    <span class="p">}</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">get_post_by_id</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">post</span><span class="p">:</span>
+        <span class="n">res</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">404</span>
+        <span class="n">res</span><span class="p">[</span><span class="s">&quot;message&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Post Not Found&quot;</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+    <span class="n">delete_post_by_id</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+
+<p>前端 html 代码（列表中删除按钮部分）：</p>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-warn btn-sm btn-delete-post&quot;</span> <span class="na">id=</span><span class="s">&quot;列表渲染时拿到的当前post 的 id &quot;</span><span class="nt">&gt;</span>删除<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-warn btn-sm btn-delete-post&quot;</span> <span class="na">id=</span><span class="s">&quot;12345&quot;</span><span class="nt">&gt;</span>删除<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+
+
+<p>前端 ajax 代码：</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;a.btn-delete-post&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
+    <span class="nx">evt</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">post_id</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;/post/&quot;</span> <span class="o">+</span> <span class="nx">post_id</span><span class="o">+</span> <span class="s2">&quot;/delete&quot;</span><span class="p">,</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;JSON&quot;</span><span class="p">,</span>
+        <span class="nx">success</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">resp</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">status</span> <span class="o">!=</span> <span class="mi">1</span> <span class="p">){</span>
+                <span class="c1">// 不等于 1 则说明删除失败，原因有很多，具体呢，就是服务端返回的 resp.message</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;删除失败，原因：&quot;</span><span class="o">+</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="c1">// resp.status 等于 1 时，则说明成功，前端处理，此处为重新加载本页。</span>
+            <span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">()</span>
+
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</pre></div>
+    </div>
+
+    <div class="copyright-info mg-top-10">
+<div class="article-copyright small">
+    <h3>版权信息</h3>
+    <ul class="text-muted">
+        <li>除非特别声明，否则本站文章均为原创。</li>
+        <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
+        <li>标题：<a href="http://blog.shajiquan.com/2015/09/flask-web-admin-delete-post/" title="shajiquan: Flask Web 开发：管理后台删除条目的前后端示例">Flask Web 开发：管理后台删除条目的前后端示例</a></li>
+        <li>作者：<a href="http://blog.shajiquan.com" title="shajiquan: 欢迎来到沙吉泉之岛。岛上居民有蟒蛇、地鼠、大象...当然，还有我...">shajiquan</a></li>
+    </ul>
+</div>    </div>
+
+    <div class="share-buttons">
+<section class="share">
+    <h3><i class="fa fa-share-alt"></i> Share</h3>
+    <a class="fa fa-twitter" href="https://twitter.com/share?text=Flask Web 开发：管理后台删除条目的前后端示例 via @shajiquan &amp;url=http://blog.shajiquan.com/2015/09/flask-web-admin-delete-post/"
+        onclick="window.open(this.href, 'twitter-share', 'width=640,height=335'); return false;"
+        title="Share on Twitter">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="fa fa-facebook" href="http://www.facebook.com/sharer/sharer.php?u=http://blog.shajiquan.com/2015/09/flask-web-admin-delete-post/"
+        onclick="window.open(this.href, 'facebook-share', 'width=580,height=296'); return false;"
+        title="Share on Facebook">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="fa fa-google-plus" href="https://plus.google.com/share?url=http://blog.shajiquan.com/2015/09/flask-web-admin-delete-post/"
+        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+        title="Share on Google Plus">
+        <span class="hidden">Google +</span>
+    </a>
+    <a class="fa fa-weibo" href="http://service.weibo.com/share/share.php?url=http://blog.shajiquan.com/2015/09/flask-web-admin-delete-post/&title=Flask Web 开发：管理后台删除条目的前后端示例&content=utf-8&type=icon&ralateUid=2800468700&language=zh_cn&searchPic=true&style=simple"
+    onclick="window.open(this.href, 'weibo-share', 'width=490,height=530');return false;"
+    title="Share on Weibo">
+        <span class="hidden">Weibo</span>
+    </a>
+</section>    </div>
+    <div class="comments">
+        <h3>Comments</h3>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'shajiquan';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+
+			<div class="copyright-footer text-center">
+				<div class="clearfix sidebar-box copyright text-muted small hidden-sm hidden-lg hidden-md">
+				<p class="lead"></p>
+				<p class="text-muted small">© 2016. All rights reserved.</p>
+				<p class="small text-muted">Powered by <a class="text-muted" href="https://github.com/shajiquan/pelican-hyde-theme">Pelican with Hyde Theme</a>.</p>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

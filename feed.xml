@@ -65,7 +65,208 @@ fmt.Println(time.Now().Format(&amp;quot;2015year 01month 01day&amp;quot;))
 
 &lt;div class="iframe-wrapper"&gt;
 &lt;iframe style="border:1px solid" src="https://wide.b3log.org/playground/0f8c6853610b15ad81512c98b6a250e7.go?embed=true" width="90%" height="600"&gt;&lt;/iframe&gt;
-&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Fri, 18 Dec 2015 18:19:00 +0800</pubDate><guid>tag:blog.shajiquan.com,2015-12-18:2015/12/golang-time-format/</guid><category>golang</category></item><item><title>First post by Pelican</title><link>http://blog.shajiquan.com/2015/12/first-post-by-pelican/</link><description>&lt;p&gt;此乃正文是也。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Mon, 14 Dec 2015 00:00:00 +0000</pubDate><guid>tag:blog.shajiquan.com,2015-12-14:2015/12/first-post-by-pelican/</guid></item><item><title>SNS 网络用户关系表结构设计</title><link>http://blog.shajiquan.com/2015/01/sns-relationship-sql-struct/</link><description>&lt;h2&gt;原题：&lt;/h2&gt;
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Fri, 18 Dec 2015 18:19:00 +0800</pubDate><guid>tag:blog.shajiquan.com,2015-12-18:2015/12/golang-time-format/</guid><category>golang</category></item><item><title>First post by Pelican</title><link>http://blog.shajiquan.com/2015/12/first-post-by-pelican/</link><description>&lt;p&gt;此乃正文是也。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Mon, 14 Dec 2015 00:00:00 +0000</pubDate><guid>tag:blog.shajiquan.com,2015-12-14:2015/12/first-post-by-pelican/</guid></item><item><title>Flask 路由中的 endpoint view function 等概念的逻辑与流程</title><link>http://blog.shajiquan.com/2015/11/flask-route-endpoint-view-funtion/</link><description>&lt;h2&gt;原题&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;标题：Flask里endpoint view function 路由等概念如何理解&lt;/li&gt;
+&lt;li&gt;网址：&lt;a href="http://segmentfault.com/q/1010000003875420/a-1020000004002578"&gt;http://segmentfault.com/q/1010000003875420/a-1020000004002578&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;详情：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在如下这段话中：&lt;/p&gt;
+&lt;p&gt;http://segmentfault.com/a/1190000002172627&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;url_for()唯一必须的参数就是endpoint名，也是每个路由的内部名。默认情况下，路由的endpoint是一个附加到视图函数的名称。在这个示例中，处理根URL的视图函数为index()，所以给url_for()的名称为index。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可以根据如下代码为参照进行解说：
+1. 路由的内部名字是什么？
+2. endpoint是一个附加到视图函数的名称，所以，endpoint名就是视图函数的名称么？
+3. 为什么需要endpoint参数的时候，需要把视图函数的名称传进去？&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;@app.route(&amp;#39;/&amp;#39;, methods=[&amp;#39;GET&amp;#39;, &amp;#39;POST&amp;#39;])
+def index():
+    form = NameForm()
+    if form.validate_on_submit():
+        session[&amp;#39;name&amp;#39;] = form.name.data
+        return redirect(url_for(&amp;#39;index&amp;#39;))
+    return render_template(&amp;#39;index.html&amp;#39;, form=form, name=session.get(&amp;#39;name&amp;#39;))
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;解答：&lt;/h2&gt;
+&lt;h3&gt;概念&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;路由规则表 url_map._rules&lt;ul&gt;
+&lt;li&gt;Rule 规则之一&lt;ul&gt;
+&lt;li&gt;函数 / view function - 处理某个 endpoint/path 的视图函数。可简单理解为，处理某个/组 URL 的函数。&lt;/li&gt;
+&lt;li&gt;终点 / endpoint - flask 内部的标识&lt;/li&gt;
+&lt;li&gt;其他 / Rule 规则转换器、methods 之类的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;流程：&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;创建 Rule/path&lt;/li&gt;
+&lt;li&gt;为 Rule/path 分配 endpoint&lt;/li&gt;
+&lt;li&gt;为 Rule/path 指定 view function.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;重点&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;一个 request 进来的时候，是依据 &lt;code&gt;rule/path&lt;/code&gt; 来定位到 app 内部的，也就是说：&lt;ul&gt;
+&lt;li&gt;当用户请求 &lt;code&gt;/a&lt;/code&gt; 时，会调用 &lt;code&gt;/a&lt;/code&gt; 条路由规则指定的视图函数来处理这个请求。&lt;/li&gt;
+&lt;li&gt;同理，&lt;code&gt;/users/&amp;lt;string:username&amp;gt;&lt;/code&gt; 也是一样。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;在 flask 的 url_map 路由表中，&lt;code&gt;rule&lt;/code&gt;/&lt;code&gt;path&lt;/code&gt; 和 &lt;code&gt;endpoint&lt;/code&gt; 在路由规则表里都是唯一的&lt;ul&gt;
+&lt;li&gt;尤其是 &lt;code&gt;endpoint&lt;/code&gt;，如果重复会报错。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rule/path&lt;/code&gt;，虽然可以重复，但其实只有第一条会生效。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;如果开发者没有在 &lt;code&gt;@app.route&lt;/code&gt; 装饰器或 &lt;code&gt;app.add_url_rule()&lt;/code&gt; 函数调用处指定 endpoint 的话，flask 会为这条 &lt;strong&gt;Rule 规则&lt;/strong&gt; 指定一个默认的 endpoint，即这个 &lt;code&gt;view function&lt;/code&gt; 的名字。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;关系&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;一个 &lt;code&gt;view function&lt;/code&gt;，可以有多个 &lt;code&gt;endpoint&lt;/code&gt;、&lt;code&gt;rule&lt;/code&gt;。是个一对多的关系。&lt;/li&gt;
+&lt;li&gt;反过来，一个 &lt;code&gt;endpoint&lt;/code&gt;，只能有一个 &lt;code&gt;rule&lt;/code&gt;, 也只能有一个 &lt;code&gt;view function&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;答案与解释&lt;/h3&gt;
+&lt;p&gt;现在，回头来看题主的疑问。&lt;/p&gt;
+&lt;p&gt;1 . 『路由的内部名字是什么？』&lt;/p&gt;
+&lt;p&gt;名字是：&lt;code&gt;index&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;在题主所说的下面的这个视图中，endpoint/路由规则表内部名称是 &lt;code&gt;index&lt;/code&gt;，因为并未在 &lt;code&gt;@app.route&lt;/code&gt; 函数调用中&lt;strong&gt;显式&lt;/strong&gt;指定 endpoint。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;@app.route(&amp;#39;/&amp;#39;, methods=[&amp;#39;GET&amp;#39;, &amp;#39;POST&amp;#39;])
+    def index():
+        form = NameForm()
+        if form.validate_on_submit():
+            session[&amp;#39;name&amp;#39;] = form.name.data
+            return redirect(url_for(&amp;#39;index&amp;#39;))
+        return render_template(&amp;#39;index.html&amp;#39;, form=form, name=session.get(&amp;#39;name&amp;#39;))
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2 . 『endpoint 是一个附加到视图函数的名称，所以，endpoint名就是视图函数的名称么？』&lt;/p&gt;
+&lt;p&gt;不是。正如上面 &lt;strong&gt;重点&lt;/strong&gt; 处所说，如果没有&lt;strong&gt;显式&lt;/strong&gt;指定 endpoint，flask 会将视图函数的名称也即此处的 &lt;code&gt;index&lt;/code&gt; 当作此路由规则的 endpoint。&lt;/p&gt;
+&lt;p&gt;3 . 『为什么需要endpoint参数的时候，需要把视图函数的名称传进去？』&lt;/p&gt;
+&lt;p&gt;并非是 &lt;strong&gt;视图函数的名称&lt;/strong&gt;，其实是 &lt;code&gt;endpoint&lt;/code&gt; 的名字，只不过正巧在某些时候，endpoint 的名字和&lt;strong&gt;视图函数的名称&lt;/strong&gt;是一样的。&lt;/p&gt;
+&lt;h3&gt;Demo&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env python3&lt;/span&gt;
+&lt;span class="c"&gt;# coding=utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;flask&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;home&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;amihome&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="sd"&gt;    请尝试以  `/` 和 `/shajiquan` 两个路径来访问；&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;View function: {view}. Endpoint: {endpoint}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;amihome&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;flask&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="c"&gt;# 给 app 添加一条 url rule, 指定 rule, endpoint, 但不指定 view function.&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_url_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rule&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/shajiquan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;shajiquan&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;methods&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;DELETE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="c"&gt;# 为 endpoint=&amp;quot;shajiquan&amp;quot; 指定 view function&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view_functions&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;shajiquan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;amihome&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;miao&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;wu at: {}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;flask&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="c"&gt;# 尝试取消注释&lt;/span&gt;
+&lt;span class="c"&gt;# app.view_functions[&amp;#39;home&amp;#39;] = miao&lt;/span&gt;
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;8964&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Mon, 16 Nov 2015 00:00:00 +0800</pubDate><guid>tag:blog.shajiquan.com,2015-11-16:2015/11/flask-route-endpoint-view-funtion/</guid><category>flask</category><category>python</category><category>web-develop</category></item><item><title>Flask Web 开发：管理后台删除条目的前后端示例</title><link>http://blog.shajiquan.com/2015/09/flask-web-admin-delete-post/</link><description>&lt;h2&gt;问题&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;标题：flask写的博客页面，现在要对文章进行删除，是怎样的一个操作思路的&lt;/li&gt;
+&lt;li&gt;网址：&lt;a href="http://segmentfault.com/q/1010000003753099/a-1020000003772140"&gt;http://segmentfault.com/q/1010000003753099/a-1020000003772140&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;详情：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="图片描述" src="https://sfault-image.b0.upaiyun.com/281/071/2810710213-55f8e42aa1f70_articlex" /&gt;&lt;/p&gt;
+&lt;p&gt;web页面进行点击删除操作后，服务端应该怎样处理的？怎样接受这个删除指令的？&lt;/p&gt;
+&lt;h2&gt;解答&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;客户端发起一个 ajax post 请求，url 为 &lt;code&gt;/post/&amp;lt;post_id&amp;gt;/delete&lt;/code&gt;，期待返回的数据类型为 &lt;code&gt;JSON&lt;/code&gt;。  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;post_id&lt;/code&gt; 为你从前端拿到的这个 post 的 id。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;服务端做处理，可能包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;验证当前用户是否有模块级别权限（假如你需要）；&lt;/li&gt;
+&lt;li&gt;检查该 id 对应的 post 是否存在；&lt;ul&gt;
+&lt;li&gt;如果不存在：返回一个 JSON 数据给前端，JSON 对象类似 &lt;code&gt;{'status':404,'message':'Not Found'}&lt;/code&gt;。如此，前端就知道这个条目不存在。&lt;/li&gt;
+&lt;li&gt;如果存在：&lt;ul&gt;
+&lt;li&gt;检查当前用户是否具有条目删除权限；&lt;ul&gt;
+&lt;li&gt;如果没有权限：返回类似上面的 JSON 数据，但 &lt;code&gt;status&lt;/code&gt; 码要重写一下，好让客户端知道这是个什么类型的错误。&lt;/li&gt;
+&lt;li&gt;如果有权限：将条目标记为删除状态，或者直接从库里删除。返回类似  &lt;code&gt;{'status':0,'message':'success'}&lt;/code&gt;，客户端就可以凭借 &lt;code&gt;status=1&lt;/code&gt; 判断出了删除成功。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;客户端在向服务端发起请求后，收到服务端返回的 JSON 数据，根据 status 值不同，做不同的处理。比如，假如 status 等于 1，那就代表删除成功，客户端就可以重新加载当前页面，或者利用前端技术把当前行从 table 中删除或者隐藏。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;status&lt;/code&gt;、&lt;code&gt;message&lt;/code&gt; 这些键名及其对应的值，客户端和服务端协商定义一个就好了。&lt;/p&gt;
+&lt;p&gt;Python 代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/post/&amp;lt;int:post_id&amp;gt;/delete&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;post_delete&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;post_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;message&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;success&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="n"&gt;post&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_post_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;post_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;status&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;404&lt;/span&gt;
+        &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;message&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Post Not Found&amp;quot;&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;delete_post_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;post_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;前端 html 代码（列表中删除按钮部分）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;btn btn-warn btn-sm btn-delete-post&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;列表渲染时拿到的当前post 的 id &amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;删除&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;btn btn-warn btn-sm btn-delete-post&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;12345&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;删除&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;前端 ajax 代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a.btn-delete-post&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;click&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;evt&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="nx"&gt;evt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;preventDefault&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;post_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ajax&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+        &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/post/&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;post_id&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/delete&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;dataType&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;JSON&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;success&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;status&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;){&lt;/span&gt;
+                &lt;span class="c1"&gt;// 不等于 1 则说明删除失败，原因有很多，具体呢，就是服务端返回的 resp.message&lt;/span&gt;
+                &lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;删除失败，原因：&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;message&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+
+            &lt;span class="c1"&gt;// resp.status 等于 1 时，则说明成功，前端处理，此处为重新加载本页。&lt;/span&gt;
+            &lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;reload&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;})&lt;/span&gt;
+&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Mon, 21 Sep 2015 00:00:00 +0800</pubDate><guid>tag:blog.shajiquan.com,2015-09-21:2015/09/flask-web-admin-delete-post/</guid><category>flask</category><category>web-develop</category><category>python</category><category>frontend</category></item><item><title>SNS 网络用户关系表结构设计</title><link>http://blog.shajiquan.com/2015/01/sns-relationship-sql-struct/</link><description>&lt;h2&gt;原题：&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;标题：社交网站的用户关系数据是怎么设计的，比如关注数，黑名单数，粉丝数等等。&lt;/li&gt;
 &lt;li&gt;网址：&lt;a href="http://segmentfault.com/q/1010000002477782"&gt;http://segmentfault.com/q/1010000002477782&lt;/a&gt;&lt;/li&gt;
