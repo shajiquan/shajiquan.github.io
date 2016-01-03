@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.shajiquan.com/</loc>
-<lastmod>2016-01-03T14:06:02-00:00</lastmod>
+<lastmod>2016-01-03T14:07:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -88,8 +88,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.shajiquan.com/tag/python</loc>
-<lastmod>2014-12-21T00:00:00+08:06</lastmod>
+<loc>http://blog.shajiquan.com/tag/frontend</loc>
+<lastmod>2014-03-14T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -97,6 +97,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://blog.shajiquan.com/tag/javascript</loc>
 <lastmod>2014-03-14T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.shajiquan.com/tag/sqlalchemy</loc>
+<lastmod>2014-12-21T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.shajiquan.com/tag/golang</loc>
+<lastmod>2015-12-18T18:19:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -116,20 +130,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.shajiquan.com/tag/frontend</loc>
-<lastmod>2014-03-14T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://blog.shajiquan.com/tag/sqlalchemy</loc>
-<lastmod>2014-12-21T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://blog.shajiquan.com/tag/sql</loc>
 <lastmod>2015-01-11T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -137,15 +137,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.shajiquan.com/tag/golang</loc>
-<lastmod>2015-12-18T18:19:00+08:06</lastmod>
+<loc>http://blog.shajiquan.com/tag/jquery</loc>
+<lastmod>2014-03-14T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.shajiquan.com/tag/jquery</loc>
-<lastmod>2014-03-14T00:00:00+08:06</lastmod>
+<loc>http://blog.shajiquan.com/tag/python</loc>
+<lastmod>2014-12-21T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
