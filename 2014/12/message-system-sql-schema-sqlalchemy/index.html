@@ -140,11 +140,17 @@
 <p>系统消息只插入Message表， type=global。
 查询的时候，保存在Message表里但又不在MeesageLog里面的message记录是系统站内信。</p>
 <p>如何一次查询，即可得到(MessageLog.receiver_id=logged_in.id) 和 系统消息里面的所有未读记录？</p>
-<h3>追加问题：两个人的来往私信， 如何查询</h3>
+<ul>
+<li>
+<p>追加问题：两个人的来往私信， 如何查询</p>
 <p><code>session.query(MessageLog, Message).filter(.message_id == ..id)</code></p>
 <p>收件人=我，发件人=对方 || 收件人=对方，发件人=我</p>
-<h3>追加问题2：如何在Sqlalchemy里面查询的时候，动态地插入一条数据？？</h3>
-<h3>追加问题3：如何查询我有多少联系人？（给我发信的人 + 接收我信件的人）</h3>
+</li>
+<li>
+<p>追加问题2：如何在Sqlalchemy里面查询的时候，动态地插入一条数据？？</p>
+</li>
+<li>追加问题3：如何查询我有多少联系人？（给我发信的人 + 接收我信件的人）</li>
+</ul>
 <h2>解答</h2>
 <p>尝试回答一下。</p>
 <p>我觉得这样的设计，把问题复杂化了。为什么不只做一张表呢？<code>Message</code>这张表，只有 sender_id，没有 receiver_id。用户 A 给用户 B 发消息，程序要操作两张表（message 和 messagelog）？好奇怪。</p>
