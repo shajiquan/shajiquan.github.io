@@ -4,6 +4,7 @@ body{
 
 .content{
     font-size: 0.8rem;
+    word-break:break-all;
 }
 
 .page, .post {
