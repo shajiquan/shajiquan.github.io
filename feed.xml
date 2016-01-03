@@ -320,7 +320,7 @@ CREATE TABLE relation (
 &lt;p&gt;希望有用。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Sun, 11 Jan 2015 00:00:00 +0000</pubDate><guid>tag:blog.shajiquan.com,2015-01-11:2015/01/sns-relationship-sql-struct/</guid><category>sns</category><category>sql</category><category>database</category></item><item><title>私信系统的数据库设计及业务处理 - Sqlalchemy 版</title><link>http://blog.shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/</link><description>&lt;h2&gt;原题&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;标题: Sqlalchemy复杂查询问题&lt;/li&gt;
-&lt;li&gt;网址: http://segmentfault.com/q/1010000002434364/a-1020000002435645&lt;/li&gt;
+&lt;li&gt;网址: &lt;a href="http://segmentfault.com/q/1010000002434364/a-1020000002435645"&gt;http://segmentfault.com/q/1010000002434364/a-1020000002435645&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;详情:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MessageLog&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;

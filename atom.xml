@@ -320,7 +320,7 @@ CREATE TABLE relation (
 &lt;p&gt;希望有用。&lt;/p&gt;</summary><category term="sns"></category><category term="sql"></category><category term="database"></category></entry><entry><title>私信系统的数据库设计及业务处理 - Sqlalchemy 版</title><link href="http://blog.shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/" rel="alternate"></link><updated>2014-12-21T00:00:00+08:00</updated><author><name>shajiquan</name></author><id>tag:blog.shajiquan.com,2014-12-21:2014/12/message-system-sql-schema-sqlalchemy/</id><summary type="html">&lt;h2&gt;原题&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;标题: Sqlalchemy复杂查询问题&lt;/li&gt;
-&lt;li&gt;网址: http://segmentfault.com/q/1010000002434364/a-1020000002435645&lt;/li&gt;
+&lt;li&gt;网址: &lt;a href="http://segmentfault.com/q/1010000002434364/a-1020000002435645"&gt;http://segmentfault.com/q/1010000002434364/a-1020000002435645&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;详情:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MessageLog&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
