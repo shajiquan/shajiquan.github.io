@@ -65,7 +65,124 @@ fmt.Println(time.Now().Format(&amp;quot;2015year 01month 01day&amp;quot;))
 
 &lt;div class="iframe-wrapper"&gt;
 &lt;iframe style="border:1px solid" src="https://wide.b3log.org/playground/0f8c6853610b15ad81512c98b6a250e7.go?embed=true" width="90%" height="600"&gt;&lt;/iframe&gt;
-&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Fri, 18 Dec 2015 18:19:00 +0800</pubDate><guid>tag:blog.shajiquan.com,2015-12-18:2015/12/golang-time-format/</guid><category>golang</category></item><item><title>First post by Pelican</title><link>http://blog.shajiquan.com/2015/12/first-post-by-pelican/</link><description>&lt;p&gt;此乃正文是也。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Mon, 14 Dec 2015 00:00:00 +0000</pubDate><guid>tag:blog.shajiquan.com,2015-12-14:2015/12/first-post-by-pelican/</guid></item><item><title>Flask 路由中的 endpoint view function 等概念的逻辑与流程</title><link>http://blog.shajiquan.com/2015/11/flask-route-endpoint-view-funtion/</link><description>&lt;h2&gt;原题&lt;/h2&gt;
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Fri, 18 Dec 2015 18:19:00 +0800</pubDate><guid>tag:blog.shajiquan.com,2015-12-18:2015/12/golang-time-format/</guid><category>golang</category></item><item><title>First post by Pelican</title><link>http://blog.shajiquan.com/2015/12/first-post-by-pelican/</link><description>&lt;p&gt;此乃正文是也。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Mon, 14 Dec 2015 00:00:00 +0000</pubDate><guid>tag:blog.shajiquan.com,2015-12-14:2015/12/first-post-by-pelican/</guid></item><item><title>Gitit Bigger 介绍及个人使用实践</title><link>http://blog.shajiquan.com/2015/12/gitit-bigger-intruduction/</link><description>&lt;p&gt;&lt;a href="https://github.com/shajiquan/gitit-bigger"&gt;Gitit Bigger&lt;/a&gt; 是我给 &lt;a href="https://github.com/jgm/gitit"&gt;Gitit​&lt;/a&gt; 写的一个 warpper。在 Gitit 的基础上，做了很多易用性的改善。&lt;/p&gt;
+&lt;h2&gt;源起&lt;/h2&gt;
+&lt;p&gt;折腾 Gitit Bigger，源于我喜欢 Markdown + Git 这种整理文档的方式。市面上类似软件有很多，各种语言开发的。我试过很多，比如 mkdocs、gollum、Realms Wiki，乃至 Moinmoin 2.0(支持 Markdown)。&lt;/p&gt;
+&lt;p&gt;但是，这些软件要么是与文件系统结合较差，要么是过于复杂，要么是中文支持较差。而我喜欢将文件系统、Git、文件夹、Markdown 这些整合起来使用。&lt;/p&gt;
+&lt;p&gt;找来找去，找到了 &lt;a href="https://github.com/jgm/gitit"&gt;Gitit​&lt;/a&gt; 。可是 Gitit 也不是没有缺点，比如 Gitit 本身安装可能较为麻烦，Gitit 的编辑功能爆弱，模板也较差（最近才开始支持响应式）。&lt;/p&gt;
+&lt;p&gt;因此，我在其基础上做了一些包装，使之更能为我所用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Github 地址：&lt;a href="https://github.com/shajiquan/gitit-bigger"&gt;https://github.com/shajiquan/gitit-bigger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Demo(Read only): &lt;a href="http://wiki.shajiquan.com"&gt;http://wiki.shajiquan.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;日常使用&lt;/h2&gt;
+&lt;p&gt;在日常使用中，我的项目文件夹下有两个 &lt;code&gt;gitit config&lt;/code&gt; 文件，还有两个 &lt;code&gt;wikidata&lt;/code&gt; 文件夹。目的在于，每个配置文件启动一个 gitit 实例，一个是公开的 &lt;a href="http://wiki.shajiquan.com"&gt;http://wiki.shajiquan.com&lt;/a&gt;，另一个是私人 Wiki。&lt;/p&gt;
+&lt;p&gt;这两个实例共享一套模板、静态文件，以及 &lt;code&gt;giti-users&lt;/code&gt; 文件，即用户账户列表。但它们的 &lt;code&gt;wikidata&lt;/code&gt; 是不同的，也就是内容条目不同。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;wikidata&lt;/code&gt; 文件夹其实是一个 Git 仓库，Gitit 会根据配置将所有添加到 Git 仓库暂存区的指定类型文件视作 wiki 条目或目录。&lt;/p&gt;
+&lt;p&gt;对于私人 wiki，如果想在本地和服务器都运行并且保持同步，我个人采用的方案是使用 Bitbucket 的仓库，因为 Bitbucket 允许免费账户创建私有仓库。&lt;/p&gt;
+&lt;p&gt;而公开 wiki，则可以使用 github 仓库。&lt;/p&gt;
+&lt;p&gt;无论是公开 wiki 还是私人 wiki、团队内部 wiki，如果想在多个机器上运行的话，可以使用 ssh-key + crontab 方式自动 pull、push 来保持同步。&lt;/p&gt;
+&lt;h2&gt;更多&lt;/h2&gt;
+&lt;p&gt;Gitit Bigger 还提供了一定程度的定制，比如 Google Analytics 统计、是否开启 ACE 编辑器、是否启用 MathJax 数学公式渲染等等。&lt;/p&gt;
+&lt;p&gt;Gitit Bigger 还提供了一些工具，比如批量修改文件名后缀，方便在不同的 Gitit 版本间切换，也提供了一些运维工具，启动、重启之类。&lt;/p&gt;
+&lt;p&gt;Gitit Bigger 目前最大的缺憾是编辑器仍然不够好，期待有一天我换上一个更好的编辑器。&lt;/p&gt;
+&lt;p&gt;其实我更想做的是用 Go 或者 Python 实现一个 Gitit……&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;下面内容来自项目文档&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;浏览&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Gitit Bigger 页面浏览" src="https://raw.githubusercontent.com/shajiquan/gitit-bigger/master/screenshots/view.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;编辑&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Gitit Bigger 页面浏览" src="https://raw.githubusercontent.com/shajiquan/gitit-bigger/master/screenshots/edit.png" /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Demo &amp;amp; Screeenshots&lt;/h2&gt;
+&lt;h2&gt;Demos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Gitit Bigger ：&lt;a href="http://wiki.shajiquan.com/gitit-bigger"&gt;http://wiki.shajiquan.com/gitit-bigger&lt;/a&gt; (Read Only)&lt;/li&gt;
+&lt;li&gt;Gitit 官方：&lt;a href="http://gitit.net"&gt;http://gitit.net&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;截图 Screenshots&lt;/h2&gt;
+&lt;h3&gt;查看 View&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/shajiquan/gitit-bigger/blob/master/screenshots/view.png"&gt;view.png&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shajiquan/gitit-bigger/blob/master/screenshots/view-ipad-mini.png"&gt;view-ipad-mini.png&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shajiquan/gitit-bigger/blob/master/screenshots/view-iphone6.png"&gt;view-iphone6.png&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;编辑 Edit&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/shajiquan/gitit-bigger/blob/master/screenshots/edit.png"&gt;edit.png&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shajiquan/gitit-bigger/blob/master/screenshots/edit-ipad-mini.png"&gt;edit-ipad-mini.png&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shajiquan/gitit-bigger/blob/master/screenshots/edit-iphone6.png"&gt;edit-iphone6.png&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Gitit 主要特性&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;无数据库&lt;/li&gt;
+&lt;li&gt;Git 版本控制&lt;/li&gt;
+&lt;li&gt;Markdown 格式&lt;/li&gt;
+&lt;li&gt;Wiki 化：&lt;ul&gt;
+&lt;li&gt;子目录，无限目录（这也是我抛弃其他一些类似 wiki 系统的原因）&lt;/li&gt;
+&lt;li&gt;中文目录、中文标题、中文分类&lt;/li&gt;
+&lt;li&gt;完美支持中文搜索&lt;/li&gt;
+&lt;li&gt;支持分类&lt;/li&gt;
+&lt;li&gt;支持自定义标题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;代码高亮&lt;/li&gt;
+&lt;li&gt;支持公式等（我基本不用）&lt;/li&gt;
+&lt;li&gt;导出 epub 等（基于 pandoc ）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更多关于 Gitit 的安装、部署、优化的中文介绍和说明，请见:&lt;br /&gt;
+- &lt;a href="https://github.com/shajiquan/gitit-bigger/blob/master/docs/gitit_base.md"&gt;gitit_base.md 简介、安装、部署&lt;/a&gt;&lt;br /&gt;
+- &lt;a href="https://github.com/shajiquan/gitit-bigger/blob/master/docs/gitit_config.md"&gt;gitit_config.md 配置&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Gitit Bigger VS Gitit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Bootstrap 模板&lt;/li&gt;
+&lt;li&gt;Ace Editor&lt;/li&gt;
+&lt;li&gt;Ace Editor 的编辑模式已设为 &lt;code&gt;markdown&lt;/code&gt;。&lt;ul&gt;
+&lt;li&gt;支持代码高亮&lt;/li&gt;
+&lt;li&gt;搜索、替换（ cmd+option+f ）&lt;/li&gt;
+&lt;li&gt;Tab 缩进、恢复（ tab 、 shift+tab ）&lt;/li&gt;
+&lt;li&gt;快捷键&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;采用配置文件方式启动，多个实例轻松共享资源&lt;/li&gt;
+&lt;li&gt;支持自定义 Ace 编辑器启用 /禁用、模式、样式等配置&lt;/li&gt;
+&lt;li&gt;支持 Markdown 模式下快捷键&lt;/li&gt;
+&lt;li&gt;数学公式：支持 MathJax 启用 /禁用，自定义 MathJax 源&lt;/li&gt;
+&lt;li&gt;代码高亮：支持使用 highlight.js 高亮代码 - Gitit 的高亮需要服务端支持&lt;/li&gt;
+&lt;li&gt;增加启动、部分、自动备份脚本或帮助&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;注意： wikidata 仓库&lt;/h2&gt;
+&lt;p&gt;请注意检查你的 &lt;code&gt;wikidata/&lt;/code&gt; 目录的 git 配置。请注意：&lt;br /&gt;
+- &lt;code&gt;wikidata&lt;/code&gt; 文件夹是一个本地仓库，所有的 wiki 页面都将保存到此处；&lt;br /&gt;
+- &lt;code&gt;Gitit&lt;/code&gt; 启动时，会检查这个文件夹是否存在，如果不存在， Gitit 将会创建它，并初始化它为一个本地仓库&lt;br /&gt;
+- 只有提交到仓库里的文件，才会被 Gitit 添加到 wiki 中。&lt;br /&gt;
+- 如果你想要将此仓库与你的远程仓库绑定、同步：你需要：&lt;br /&gt;
+- clone 你的 wiki 仓库到 &lt;code&gt;wikidata&lt;/code&gt; 文件夹：&lt;code&gt;git clone your-wikidata.git ./wikidata&lt;/code&gt;，或者：&lt;br /&gt;
+- 运行 &lt;code&gt;git remote&lt;/code&gt; 相关命令，使 &lt;code&gt;wikidata&lt;/code&gt; 文件夹和你的远程仓库连接起来；&lt;/p&gt;
+&lt;pre&gt;
+\# 如果  wikidata 文件夹尚不存在cd ~/workspace/gitit
+git clone your-wikidata.git ./wikidata
+git branch --set-upstream-to=origin/master master
+\# 启动 gitit 服务: ./run/run.sh start
+
+\# 如果 wikidata 已经存在，但并没有和你的远程仓库绑定
+cd wikidata
+git remote add origin path/to/your-wikidata.git
+git branch --set-upstream-to=origin/master master
+\# 启动 gitit 服务: ./run/run.sh start
+&lt;/pre&gt;
+
+&lt;h2&gt;配置、自定义 JS/CSS&lt;/h2&gt;
+&lt;p&gt;Gitit Bigger 提供一定程度的配置。&lt;/p&gt;
+&lt;p&gt;你可以通过在 &lt;code&gt;templates/page_more_scripts.st&lt;/code&gt; 里定义 &lt;code&gt;BIGGER_SETTINGS_APPEND&lt;/code&gt; 对象来覆盖默认配置。&lt;/p&gt;
+&lt;p&gt;包括：&lt;br /&gt;
+- ace 编辑器&lt;br /&gt;
+- markdown&lt;br /&gt;
+- MathJax 数学公式插件&lt;br /&gt;
+- highlightjs 代码高亮&lt;br /&gt;
+- Google Analytics 统计&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">shajiquan</dc:creator><pubDate>Fri, 11 Dec 2015 00:00:00 +0800</pubDate><guid>tag:blog.shajiquan.com,2015-12-11:2015/12/gitit-bigger-intruduction/</guid><category>git</category><category>gitit</category><category>gitit-bigger</category><category>wiki</category><category>markdown</category><category>document-manager</category><category>projects</category></item><item><title>Flask 路由中的 endpoint view function 等概念的逻辑与流程</title><link>http://blog.shajiquan.com/2015/11/flask-route-endpoint-view-funtion/</link><description>&lt;h2&gt;原题&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;标题：Flask里endpoint view function 路由等概念如何理解&lt;/li&gt;
 &lt;li&gt;网址：&lt;a href="http://segmentfault.com/q/1010000003875420/a-1020000004002578"&gt;http://segmentfault.com/q/1010000003875420/a-1020000004002578&lt;/a&gt;&lt;/li&gt;
