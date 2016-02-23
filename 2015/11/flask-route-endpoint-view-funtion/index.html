@@ -14,7 +14,8 @@
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
 		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
 		<link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-	        <link rel="stylesheet" href="/theme/css/style.min.css?bb34772a">
+	        <link rel="stylesheet" href="/theme/css/style.min.css?6b1824bf">
+		<script src="/theme/js/jquery-2.1.4.min.js"></script>
 
 			<link rel="icon" type="image/x-icon" href="/static/images/hugme.png">
 			<link rel="apple-touch-icon" sizes="57x57" href="/static/images/hugme.png">
@@ -185,37 +186,37 @@ def index():
 <p>3 . 『为什么需要endpoint参数的时候，需要把视图函数的名称传进去？』</p>
 <p>并非是 <strong>视图函数的名称</strong>，其实是 <code>endpoint</code> 的名字，只不过正巧在某些时候，endpoint 的名字和<strong>视图函数的名称</strong>是一样的。</p>
 <h3>Demo</h3>
-<div class="highlight"><pre><span class="c">#!/usr/bin/env python3</span>
-<span class="c"># coding=utf-8</span>
+<div class="highlight"><pre><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># coding=utf-8</span>
 <span class="kn">import</span> <span class="nn">flask</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="s">&quot;home&quot;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;home&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">amihome</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    请尝试以  `/` 和 `/shajiquan` 两个路径来访问；</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="s">&quot;View function: {view}. Endpoint: {endpoint}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="s">&quot;amihome&quot;</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">endpoint</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;View function: {view}. Endpoint: {endpoint}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="s2">&quot;amihome&quot;</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">endpoint</span><span class="p">)</span>
 
 
-<span class="c"># 给 app 添加一条 url rule, 指定 rule, endpoint, 但不指定 view function.</span>
-<span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s">&#39;/shajiquan&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="s">&quot;shajiquan&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;DELETE&quot;</span><span class="p">])</span>
-<span class="c"># 为 endpoint=&quot;shajiquan&quot; 指定 view function</span>
-<span class="n">app</span><span class="o">.</span><span class="n">view_functions</span><span class="p">[</span><span class="s">&#39;shajiquan&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">amihome</span>
+<span class="c1"># 给 app 添加一条 url rule, 指定 rule, endpoint, 但不指定 view function.</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s1">&#39;/shajiquan&#39;</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;shajiquan&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;DELETE&quot;</span><span class="p">])</span>
+<span class="c1"># 为 endpoint=&quot;shajiquan&quot; 指定 view function</span>
+<span class="n">app</span><span class="o">.</span><span class="n">view_functions</span><span class="p">[</span><span class="s1">&#39;shajiquan&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">amihome</span>
 
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">miao</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s">&quot;wu at: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">endpoint</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;wu at: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">endpoint</span><span class="p">)</span>
 
 
-<span class="c"># 尝试取消注释</span>
-<span class="c"># app.view_functions[&#39;home&#39;] = miao</span>
+<span class="c1"># 尝试取消注释</span>
+<span class="c1"># app.view_functions[&#39;home&#39;] = miao</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8964</span><span class="p">)</span>
 </pre></div>
     </div>
@@ -279,5 +280,12 @@ def index():
 			</div>
 		</div>
 	</body>
+
+	<script>
+		$(document).ready(function(){
+			console.log('from-blog',$(window).width());
+
+		});
+	</script>
 
 </html>

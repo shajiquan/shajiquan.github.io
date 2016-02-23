@@ -14,7 +14,8 @@
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
 		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
 		<link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-	        <link rel="stylesheet" href="/theme/css/style.min.css?bb34772a">
+	        <link rel="stylesheet" href="/theme/css/style.min.css?6b1824bf">
+		<script src="/theme/js/jquery-2.1.4.min.js"></script>
 
 			<link rel="icon" type="image/x-icon" href="/static/images/hugme.png">
 			<link rel="apple-touch-icon" sizes="57x57" href="/static/images/hugme.png">
@@ -87,6 +88,25 @@
 	</div>
 </div>		<div class="content container">
 <div class="posts">
+<div class="post">
+    <h2 class="post-title" href="http://blog.shajiquan.com/2016/02/restful-api-and-admin/#restful-api-and-admin">
+        <a href="http://blog.shajiquan.com/2016/02/restful-api-and-admin/">Restful API 和管理后台的统一或分离</a>
+    </h2>
+    <span class="post-date">
+        2016-02-23
+        in <a href="http://blog.shajiquan.com/category/qa" title="Q & A 系列文章是我在 Segmentfault 等社区的回答。发在 Blog 时可能略做调整。">问与答</a>,
+    with tags:
+        <a href="http://blog.shajiquan.com/tag/restful/">restful</a>,
+        <a href="http://blog.shajiquan.com/tag/api/">api</a>,
+        <a href="http://blog.shajiquan.com/tag/web-develop/">web-develop</a>,
+        <a href="http://blog.shajiquan.com/tag/flask/">flask</a>,
+        <a href="http://blog.shajiquan.com/tag/python/">python</a>,
+    </span>
+
+    <p class="post-description post-summary small text-muted">
+        移动 App 的 API 是否同时可提供给管理后台使用
+    </p>
+</div>
 <div class="post">
     <h2 class="post-title" href="http://blog.shajiquan.com/2016/01/happy-new-year-2016/#happy-new-year-2016">
         <a href="http://blog.shajiquan.com/2016/01/happy-new-year-2016/">Happy New Year 2016</a>
@@ -199,35 +219,31 @@
 
 </div>
 <div class="post">
-    <h2 class="post-title" href="http://blog.shajiquan.com/2014/03/qa-frontend-js-click/#qa-frontend-js-click">
-        <a href="http://blog.shajiquan.com/2014/03/qa-frontend-js-click/">怎么设置一个网页中 点开一个链接后 其它链接不能再点击</a>
+    <h2 class="post-title" href="http://blog.shajiquan.com/2014/11/flask-webpy-routing/#flask-webpy-routing">
+        <a href="http://blog.shajiquan.com/2014/11/flask-webpy-routing/">Flask 如何实现类似 web.py 的 URL 映射？</a>
     </h2>
     <span class="post-date">
-        2014-03-14
+        2014-11-08
         in <a href="http://blog.shajiquan.com/category/qa" title="Q & A 系列文章是我在 Segmentfault 等社区的回答。发在 Blog 时可能略做调整。">问与答</a>,
     with tags:
-        <a href="http://blog.shajiquan.com/tag/frontend/">frontend</a>,
-        <a href="http://blog.shajiquan.com/tag/javascript/">javascript</a>,
-        <a href="http://blog.shajiquan.com/tag/jquery/">jquery</a>,
-    </span>
-
-</div>
-<div class="post">
-    <h2 class="post-title" href="http://blog.shajiquan.com/2014/01/baidu-map-api-golang/#baidu-map-api-golang">
-        <a href="http://blog.shajiquan.com/2014/01/baidu-map-api-golang/">百度地图接口调用 golang 版</a>
-    </h2>
-    <span class="post-date">
-        2014-01-04
-        in <a href="http://blog.shajiquan.com/category/golang" title="Golang 学习笔记">Golang</a>,
-    with tags:
-        <a href="http://blog.shajiquan.com/tag/golang/">Golang</a>,
-        <a href="http://blog.shajiquan.com/tag/baidu-map/">百度地图</a>,
-        <a href="http://blog.shajiquan.com/tag/projects/">projects</a>,
+        <a href="http://blog.shajiquan.com/tag/flask/">flask</a>,
+        <a href="http://blog.shajiquan.com/tag/web-develop/">web-develop</a>,
+        <a href="http://blog.shajiquan.com/tag/python/">python</a>,
     </span>
 
 </div>
 </div>
 
+<div class="pagination">
+
+	<span class="pagination-item newer">
+ Newer
+	</span>
+
+	<span class="pagination-item older">
+			<a href="http://blog.shajiquan.com/index2.html">Older</a>
+	</span>
+</div>
 
 
 			<div class="copyright-footer text-center">
@@ -239,5 +255,12 @@
 			</div>
 		</div>
 	</body>
+
+	<script>
+		$(document).ready(function(){
+			console.log('from-blog',$(window).width());
+
+		});
+	</script>
 
 </html>

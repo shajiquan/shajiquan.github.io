@@ -14,7 +14,8 @@
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
 		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
 		<link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-	        <link rel="stylesheet" href="/theme/css/style.min.css?bb34772a">
+	        <link rel="stylesheet" href="/theme/css/style.min.css?6b1824bf">
+		<script src="/theme/js/jquery-2.1.4.min.js"></script>
 
 			<link rel="icon" type="image/x-icon" href="/static/images/hugme.png">
 			<link rel="apple-touch-icon" sizes="57x57" href="/static/images/hugme.png">
@@ -146,17 +147,17 @@
 <p>Python 代码：</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
 
-<span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/post/&lt;int:post_id&gt;/delete&#39;</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/post/&lt;int:post_id&gt;/delete&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">post_delete</span><span class="p">(</span><span class="n">post_id</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">&quot;status&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
-        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;success&quot;</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;success&quot;</span>
     <span class="p">}</span>
     <span class="n">post</span> <span class="o">=</span> <span class="n">get_post_by_id</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">post</span><span class="p">:</span>
-        <span class="n">res</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">404</span>
-        <span class="n">res</span><span class="p">[</span><span class="s">&quot;message&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Post Not Found&quot;</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">404</span>
+        <span class="n">res</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Post Not Found&quot;</span>
         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 
     <span class="n">delete_post_by_id</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
@@ -165,8 +166,8 @@
 
 
 <p>前端 html 代码（列表中删除按钮部分）：</p>
-<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-warn btn-sm btn-delete-post&quot;</span> <span class="na">id=</span><span class="s">&quot;列表渲染时拿到的当前post 的 id &quot;</span><span class="nt">&gt;</span>删除<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-warn btn-sm btn-delete-post&quot;</span> <span class="na">id=</span><span class="s">&quot;12345&quot;</span><span class="nt">&gt;</span>删除<span class="nt">&lt;/a&gt;</span>
+<div class="highlight"><pre><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-warn btn-sm btn-delete-post&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;列表渲染时拿到的当前post 的 id &quot;</span><span class="p">&gt;</span>删除<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-warn btn-sm btn-delete-post&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;12345&quot;</span><span class="p">&gt;</span>删除<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </pre></div>
 
 
@@ -252,5 +253,12 @@
 			</div>
 		</div>
 	</body>
+
+	<script>
+		$(document).ready(function(){
+			console.log('from-blog',$(window).width());
+
+		});
+	</script>
 
 </html>

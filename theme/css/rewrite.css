@@ -42,9 +42,11 @@ h2.post-title{
 .post-content h2,
 .post-content h3,
 .post-content h4,
-.post-content h5{
+.post-content h5,
+.post-content h6{
     border-bottom: 1px solid #eee;
     padding-bottom: 0.2rem;
+    margin-bottom: 1rem;
 }
 
 .post-content a,.article-copyright a {

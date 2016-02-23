@@ -8,7 +8,7 @@
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-		<title>Happy New Year 2016 - Shajiquan's Island</title>
+		<title>Restful API 和管理后台的统一或分离 - Shajiquan's Island</title>
 
 		<!-- CSS -->
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
@@ -34,6 +34,12 @@
 			ga('send', 'pageview');
 	</script>
 
+        <meta name="description" content="移动 App 的 API 是否同时可提供给管理后台使用" />
+        <meta name="tags" content="restful" />
+        <meta name="tags" content="api" />
+        <meta name="tags" content="web-develop" />
+        <meta name="tags" content="flask" />
+        <meta name="tags" content="python" />
 	</head>
 
 	<body class="layout-reverse">
@@ -90,14 +96,35 @@
 </div>		<div class="content container">
 <div class="post">
     <h1 class="post-title">
-        Happy New Year 2016
+        Restful API 和管理后台的统一或分离
     </h1>
     <span class="post-date">
-        2016-01-01 in <a href="http://blog.shajiquan.com/category/misc" title="默认分类，杂七杂八。">默认分类</a>,     </span>
+        2016-02-23 in <a href="http://blog.shajiquan.com/category/qa" title="Q & A 系列文章是我在 Segmentfault 等社区的回答。发在 Blog 时可能略做调整。">问与答</a>,     with tags:
+        <a href="http://blog.shajiquan.com/tag/restful/">restful</a>,
+        <a href="http://blog.shajiquan.com/tag/api/">api</a>,
+        <a href="http://blog.shajiquan.com/tag/web-develop/">web-develop</a>,
+        <a href="http://blog.shajiquan.com/tag/flask/">flask</a>,
+        <a href="http://blog.shajiquan.com/tag/python/">python</a>,
+    </span>
 
     <div class="post-content">
-        <p>新年快乐！</p>
-<p>愿看到本文的你，在新的一年，身与心，都有更多的收获。</p>
+        <h2>原题</h2>
+<ul>
+<li>标题: 做一个移动 app 的 api，使用 python，有些疑问，请教给位 v 友</li>
+<li>网址: <a href="https://www.v2ex.com/t/251411">https://www.v2ex.com/t/251411</a></li>
+<li>详情: 第一次写一个 app 的后台 api ，决定用 flask ，提供 api 的同时，通过网页形式提供后台管理，大概思路是 API 返回 JSON 数据，同时提供网页，需不需要把这两部分分开呢，有没有这类的大概框架可供参考呢？</li>
+</ul>
+<h2>解答</h2>
+<p>app 的 api 是给 app 的用户用的，管理后台，是给管理人员用的。其中有共通之处 ，但也会有大量不同之处。</p>
+<p>需求、权限、授权机制、深度、广度都有不同。</p>
+<p>假设 app 里一个用户要看帖子列表， api 肯定会提供这个接口，还需要授权机制。</p>
+<p>按理说，后台也需要这个接口，但后台的需求应该又有所不同，首先授权机制就可能不同。其次对于帖子的搜索方面，需求比 app 端要多一些吧，而面向 app 的 api 未必需要提供这么多的支持，可能只是普通的按日查询，排发布日期排序之类的。</p>
+<p>而管理后台可能就需要很多条件了，比如评论数量超过 X 条的，被收藏 Y 次以上的等等。</p>
+<p>所以说，在这个层面上，是分开的。</p>
+<p>管理后台这边在使用数据时，如果没有更底层的 API 可供调用，那么这个需求，可能就需要管理后台直接去查库，甚至会查 N 张表来建立各种筛选条件。</p>
+<p>肯定也有一些接口是可以直接调用 API 的。比如说工具性的、公共性的。不过这还是要取决于 API 那边的授权机制，以及后台的账户体系。</p>
+<p>如果为了个别用户的『超级权限』，把 API 搞得巨复杂，巨多权限检测，恐怕也不是个好方案。</p>
+<p>这是我自己的一些经验，仅供参考。</p>
     </div>
 
     <div class="copyright-info mg-top-10">
@@ -106,7 +133,7 @@
     <ul class="text-muted">
         <li>除非特别声明，否则本站文章均为原创。</li>
         <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
-        <li>标题：<a href="http://blog.shajiquan.com/2016/01/happy-new-year-2016/" title="shajiquan: Happy New Year 2016">Happy New Year 2016</a></li>
+        <li>标题：<a href="http://blog.shajiquan.com/2016/02/restful-api-and-admin/" title="shajiquan: Restful API 和管理后台的统一或分离">Restful API 和管理后台的统一或分离</a></li>
         <li>作者：<a href="http://blog.shajiquan.com" title="shajiquan: 欢迎来到沙吉泉之岛。岛上居民有蟒蛇、地鼠、大象...当然，还有我...">shajiquan</a></li>
     </ul>
 </div>    </div>
@@ -114,22 +141,22 @@
     <div class="share-buttons">
 <section class="share">
     <h3><i class="fa fa-share-alt"></i> Share</h3>
-    <a class="fa fa-twitter" href="https://twitter.com/share?text=Happy New Year 2016 via @shajiquan &amp;url=http://blog.shajiquan.com/2016/01/happy-new-year-2016/"
+    <a class="fa fa-twitter" href="https://twitter.com/share?text=Restful API 和管理后台的统一或分离 via @shajiquan  - 移动 App 的 API 是否同时可提供给管理后台使用&amp;url=http://blog.shajiquan.com/2016/02/restful-api-and-admin/"
         onclick="window.open(this.href, 'twitter-share', 'width=640,height=335'); return false;"
         title="Share on Twitter">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="fa fa-facebook" href="http://www.facebook.com/sharer/sharer.php?u=http://blog.shajiquan.com/2016/01/happy-new-year-2016/"
+    <a class="fa fa-facebook" href="http://www.facebook.com/sharer/sharer.php?u=http://blog.shajiquan.com/2016/02/restful-api-and-admin/"
         onclick="window.open(this.href, 'facebook-share', 'width=580,height=296'); return false;"
         title="Share on Facebook">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="fa fa-google-plus" href="https://plus.google.com/share?url=http://blog.shajiquan.com/2016/01/happy-new-year-2016/"
+    <a class="fa fa-google-plus" href="https://plus.google.com/share?url=http://blog.shajiquan.com/2016/02/restful-api-and-admin/"
         onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
         title="Share on Google Plus">
         <span class="hidden">Google +</span>
     </a>
-    <a class="fa fa-weibo" href="http://service.weibo.com/share/share.php?url=http://blog.shajiquan.com/2016/01/happy-new-year-2016/&title=Happy New Year 2016&content=utf-8&type=icon&ralateUid=2800468700&language=zh_cn&searchPic=true&style=simple"
+    <a class="fa fa-weibo" href="http://service.weibo.com/share/share.php?url=http://blog.shajiquan.com/2016/02/restful-api-and-admin/&title=Restful API 和管理后台的统一或分离&content=utf-8&type=icon&ralateUid=2800468700&language=zh_cn&searchPic=true&style=simple"
     onclick="window.open(this.href, 'weibo-share', 'width=490,height=530');return false;"
     title="Share on Weibo">
         <span class="hidden">Weibo</span>
