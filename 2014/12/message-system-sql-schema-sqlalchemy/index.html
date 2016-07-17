@@ -24,7 +24,7 @@
 			<link rel="apple-touch-icon" sizes="144x144" href="/static/images/hugme.png">
 
 		<!-- RSS -->
-		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.shajiquan.com/feed.xml">
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="https://shajiquan.com/feed.xml">
 	<script type="text/javascript">
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
  			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -77,7 +77,7 @@
  				<a class="sidebar-nav-item" href="feed.xml">
 					<i class="fa fa-feed"></i>
 				</a>
-				<a class="sidebar-nav-item" href="http://blog.shajiquan.com/about" title="More about...">
+				<a class="sidebar-nav-item" href="https://shajiquan.com/about" title="More about...">
 					<i class="fa fa-plus-circle"></i>
 				</a>
 			</nav>
@@ -97,11 +97,11 @@
         私信系统的数据库设计及业务处理 - Sqlalchemy 版
     </h1>
     <span class="post-date">
-        2014-12-21 in <a href="http://blog.shajiquan.com/category/qa" title="Q & A 系列文章是我在 Segmentfault 等社区的回答。发在 Blog 时可能略做调整。">问与答</a>,     with tags:
-        <a href="http://blog.shajiquan.com/tag/python/">python</a>,
-        <a href="http://blog.shajiquan.com/tag/sql/">sql</a>,
-        <a href="http://blog.shajiquan.com/tag/database/">database</a>,
-        <a href="http://blog.shajiquan.com/tag/sqlalchemy/">sqlalchemy</a>,
+        2014-12-21 in <a href="https://shajiquan.com/category/qa" title="Q & A 系列文章是我在 Segmentfault 等社区的回答。发在 Blog 时可能略做调整。">问与答</a>,     with tags:
+        <a href="https://shajiquan.com/tag/python/">python</a>,
+        <a href="https://shajiquan.com/tag/sql/">sql</a>,
+        <a href="https://shajiquan.com/tag/database/">database</a>,
+        <a href="https://shajiquan.com/tag/sqlalchemy/">sqlalchemy</a>,
     </span>
 
     <div class="post-content">
@@ -112,23 +112,23 @@
 <li>详情:</li>
 </ul>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">MessageLog</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;messagelogs&#39;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s">&#39;messagelogs&#39;</span>
     <span class="nb">id</span>          <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">receiver_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;users.id&#39;</span><span class="p">))</span>
-    <span class="n">message_id</span>  <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;messages.id&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">messagelog_status</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;messagelog_status&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s1">&#39;unread&#39;</span><span class="p">,</span> <span class="s1">&#39;read&#39;</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">message</span>     <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Message&quot;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s2">&quot;receivers&quot;</span><span class="p">)</span>
-    <span class="n">receiver</span>    <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;User&quot;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="n">backref</span><span class="p">(</span><span class="s2">&quot;receive_messages&quot;</span><span class="p">,</span> <span class="n">cascade</span><span class="o">=</span><span class="s2">&quot;all, delete, delete-orphan&quot;</span><span class="p">))</span>
+    <span class="n">receiver_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;users.id&#39;</span><span class="p">))</span>
+    <span class="n">message_id</span>  <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;messages.id&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">messagelog_status</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s">&#39;messagelog_status&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s">&#39;unread&#39;</span><span class="p">,</span> <span class="s">&#39;read&#39;</span><span class="p">,</span> <span class="s">&#39;delete&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">message</span>     <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s">&quot;Message&quot;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s">&quot;receivers&quot;</span><span class="p">)</span>
+    <span class="n">receiver</span>    <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s">&quot;User&quot;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="n">backref</span><span class="p">(</span><span class="s">&quot;receive_messages&quot;</span><span class="p">,</span> <span class="n">cascade</span><span class="o">=</span><span class="s">&quot;all, delete, delete-orphan&quot;</span><span class="p">))</span>
 
 <span class="k">class</span> <span class="nc">Message</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;messages&#39;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s">&#39;messages&#39;</span>
     <span class="nb">id</span>        <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">sender_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;users.id&#39;</span><span class="p">))</span>
+    <span class="n">sender_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;users.id&#39;</span><span class="p">))</span>
     <span class="n">body</span>      <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="nb">type</span>      <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;message_types&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s1">&#39;private&#39;</span><span class="p">,</span> <span class="s1">&#39;public&#39;</span><span class="p">,</span> <span class="s1">&#39;global&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="nb">type</span>      <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s">&#39;message_types&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s">&#39;private&#39;</span><span class="p">,</span> <span class="s">&#39;public&#39;</span><span class="p">,</span> <span class="s">&#39;global&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">posted_at</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">current_timestamp</span><span class="p">())</span>
-    <span class="n">message_status</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;message_status&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s1">&#39;draft&#39;</span><span class="p">,</span> <span class="s1">&#39;sent&#39;</span><span class="p">,</span> <span class="s1">&#39;deleted&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">sender</span>    <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;User&quot;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s2">&quot;sent_messages&quot;</span><span class="p">)</span>
+    <span class="n">message_status</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s">&#39;message_status&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s">&#39;draft&#39;</span><span class="p">,</span> <span class="s">&#39;sent&#39;</span><span class="p">,</span> <span class="s">&#39;deleted&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">sender</span>    <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s">&quot;User&quot;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s">&quot;sent_messages&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -157,15 +157,15 @@
 <p>我觉得这样的设计，把问题复杂化了。为什么不只做一张表呢？<code>Message</code>这张表，只有 sender_id，没有 receiver_id。用户 A 给用户 B 发消息，程序要操作两张表（message 和 messagelog）？好奇怪。</p>
 <p>我认为更好的设计是只有一张表，包含了 sender_id、reciever_id、message_status、messagelog_status 等；</p>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Message</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;messages&#39;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s">&#39;messages&#39;</span>
     <span class="nb">id</span>        <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>   
-    <span class="n">sender_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;users.id&#39;</span><span class="p">))</span>
-    <span class="n">receiver_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;users.id&#39;</span><span class="p">))</span> <span class="c1"># 新增</span>
+    <span class="n">sender_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;users.id&#39;</span><span class="p">))</span>
+    <span class="n">receiver_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;users.id&#39;</span><span class="p">))</span> <span class="c"># 新增</span>
     <span class="n">body</span>      <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="nb">type</span>      <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;message_types&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s1">&#39;private&#39;</span><span class="p">,</span> <span class="s1">&#39;public&#39;</span><span class="p">,</span> <span class="s1">&#39;global&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="nb">type</span>      <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s">&#39;message_types&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s">&#39;private&#39;</span><span class="p">,</span> <span class="s">&#39;public&#39;</span><span class="p">,</span> <span class="s">&#39;global&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">posted_at</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">current_timestamp</span><span class="p">())</span>
-    <span class="n">message_status</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;message_status&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s1">&#39;draft&#39;</span><span class="p">,</span> <span class="s1">&#39;sent&#39;</span><span class="p">,</span> <span class="s1">&#39;deleted&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">messagelog_status</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;messagelog_status&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s1">&#39;unread&#39;</span><span class="p">,</span> <span class="s1">&#39;read&#39;</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c1"># 新增</span>
+    <span class="n">message_status</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s">&#39;message_status&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s">&#39;draft&#39;</span><span class="p">,</span> <span class="s">&#39;sent&#39;</span><span class="p">,</span> <span class="s">&#39;deleted&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">messagelog_status</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s">&#39;messagelog_status&#39;</span><span class="p">,</span> <span class="n">Enum</span><span class="p">(</span><span class="s">&#39;unread&#39;</span><span class="p">,</span> <span class="s">&#39;read&#39;</span><span class="p">,</span> <span class="s">&#39;delete&#39;</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c"># 新增</span>
 </pre></div>
 
 
@@ -177,7 +177,7 @@
 <span class="n">messages</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Message</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
     <span class="n">sa</span><span class="o">.</span><span class="n">or_</span><span class="p">(</span>
         <span class="n">Message</span><span class="o">.</span><span class="n">receiver_id</span> <span class="o">==</span> <span class="n">logged_in</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-        <span class="n">sa</span><span class="o">.</span><span class="n">and_</span><span class="p">(</span><span class="n">Message</span><span class="o">.</span><span class="n">type</span><span class="o">==</span><span class="s1">&#39;global&#39;</span><span class="p">,</span><span class="n">Message</span><span class="o">.</span><span class="n">messagelog_status</span><span class="o">==</span><span class="s1">&#39;unread&#39;</span><span class="p">)</span>
+        <span class="n">sa</span><span class="o">.</span><span class="n">and_</span><span class="p">(</span><span class="n">Message</span><span class="o">.</span><span class="n">type</span><span class="o">==</span><span class="s">&#39;global&#39;</span><span class="p">,</span><span class="n">Message</span><span class="o">.</span><span class="n">messagelog_status</span><span class="o">==</span><span class="s">&#39;unread&#39;</span><span class="p">)</span>
     <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
@@ -209,30 +209,30 @@
     <ul class="text-muted">
         <li>除非特别声明，否则本站文章均为原创。</li>
         <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
-        <li>标题：<a href="http://blog.shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/" title="shajiquan: 私信系统的数据库设计及业务处理 - Sqlalchemy 版">私信系统的数据库设计及业务处理 - Sqlalchemy 版</a></li>
-        <li>作者：<a href="http://blog.shajiquan.com" title="shajiquan: 欢迎来到沙吉泉之岛。岛上居民有蟒蛇、地鼠、大象...当然，还有我...">shajiquan</a></li>
+        <li>标题：<a href="https://shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/" title="shajiquan: 私信系统的数据库设计及业务处理 - Sqlalchemy 版">私信系统的数据库设计及业务处理 - Sqlalchemy 版</a></li>
+        <li>作者：<a href="https://shajiquan.com" title="shajiquan: 欢迎来到沙吉泉之岛。岛上居民有蟒蛇、地鼠、大象...当然，还有我...">shajiquan</a></li>
     </ul>
 </div>    </div>
 
     <div class="share-buttons">
 <section class="share">
     <h3><i class="fa fa-share-alt"></i> Share</h3>
-    <a class="fa fa-twitter" href="https://twitter.com/share?text=私信系统的数据库设计及业务处理 - Sqlalchemy 版 via @shajiquan &amp;url=http://blog.shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/"
+    <a class="fa fa-twitter" href="https://twitter.com/share?text=私信系统的数据库设计及业务处理 - Sqlalchemy 版 via @shajiquan &amp;url=https://shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/"
         onclick="window.open(this.href, 'twitter-share', 'width=640,height=335'); return false;"
         title="Share on Twitter">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="fa fa-facebook" href="http://www.facebook.com/sharer/sharer.php?u=http://blog.shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/"
+    <a class="fa fa-facebook" href="http://www.facebook.com/sharer/sharer.php?u=https://shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/"
         onclick="window.open(this.href, 'facebook-share', 'width=580,height=296'); return false;"
         title="Share on Facebook">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="fa fa-google-plus" href="https://plus.google.com/share?url=http://blog.shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/"
+    <a class="fa fa-google-plus" href="https://plus.google.com/share?url=https://shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/"
         onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
         title="Share on Google Plus">
         <span class="hidden">Google +</span>
     </a>
-    <a class="fa fa-weibo" href="http://service.weibo.com/share/share.php?url=http://blog.shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/&title=私信系统的数据库设计及业务处理 - Sqlalchemy 版&content=utf-8&type=icon&ralateUid=2800468700&language=zh_cn&searchPic=true&style=simple"
+    <a class="fa fa-weibo" href="http://service.weibo.com/share/share.php?url=https://shajiquan.com/2014/12/message-system-sql-schema-sqlalchemy/&title=私信系统的数据库设计及业务处理 - Sqlalchemy 版&content=utf-8&type=icon&ralateUid=2800468700&language=zh_cn&searchPic=true&style=simple"
     onclick="window.open(this.href, 'weibo-share', 'width=490,height=530');return false;"
     title="Share on Weibo">
         <span class="hidden">Weibo</span>
